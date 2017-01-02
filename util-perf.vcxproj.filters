@@ -9,12 +9,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="perf\associative_containers.cpp">
-      <Filter>Tests\containers</Filter>
-    </ClCompile>
     <ClCompile Include="perf\sequence_containers.cpp">
       <Filter>Tests\containers</Filter>
     </ClCompile>
     <ClCompile Include="perf\perf_main.cpp" />
+    <ClCompile Include="perf\associative_containers.cpp">
+      <Filter>Tests\containers</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

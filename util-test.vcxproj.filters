@@ -15,32 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="test\prng_test_util.hpp">
-      <Filter>Tests\prng</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="test\split_mix_64.cpp">
-      <Filter>Tests\prng</Filter>
-    </ClCompile>
-    <ClCompile Include="test\xorshift_128_plus.cpp">
-      <Filter>Tests\prng</Filter>
-    </ClCompile>
-    <ClCompile Include="test\xorshift_1024_star.cpp">
-      <Filter>Tests\prng</Filter>
-    </ClCompile>
-    <ClCompile Include="test\chunked_list.cpp">
+    <ClCompile Include="test\test_main.cpp" />
+    <ClCompile Include="test\test_chunked_list.cpp">
       <Filter>Tests\containers</Filter>
     </ClCompile>
-    <ClCompile Include="test\utf8_iterator.cpp">
-      <Filter>Tests\strings</Filter>
-    </ClCompile>
-    <ClCompile Include="test\xoroshiro_128_plus.cpp">
+    <ClCompile Include="test\test_split_mix_64.cpp">
       <Filter>Tests\prng</Filter>
     </ClCompile>
-    <ClCompile Include="test\binary_units.cpp">
+    <ClCompile Include="test\test_xoroshiro_128_plus.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_xorshift_128_plus.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_xorshift_1024_star.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_binary_units.cpp">
       <Filter>Tests\strings</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_main.cpp" />
+    <ClCompile Include="test\test_utf8_iterator.cpp">
+      <Filter>Tests\strings</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test\prng_test_util.hpp" />
   </ItemGroup>
 </Project>
