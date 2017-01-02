@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{100a81d2-ccf9-463f-8bfd-954a098236a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\prng">
+      <UniqueIdentifier>{c4abfa50-9467-4351-89aa-4545b48d6251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\containers">
+      <UniqueIdentifier>{6831dfa2-9eaa-47ab-90e2-b208bd05f3cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\strings">
+      <UniqueIdentifier>{9d3df532-5358-4164-85ac-17c3b715f0c4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test\prng_test_util.hpp">
+      <Filter>Tests\prng</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test\split_mix_64.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\xorshift_128_plus.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\xorshift_1024_star.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\chunked_list.cpp">
+      <Filter>Tests\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="test\utf8_iterator.cpp">
+      <Filter>Tests\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="test\xoroshiro_128_plus.cpp">
+      <Filter>Tests\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="test\binary_units.cpp">
+      <Filter>Tests\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_main.cpp" />
+  </ItemGroup>
+</Project>

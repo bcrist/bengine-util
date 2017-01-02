@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\containers">
+      <UniqueIdentifier>{88b765ae-ba45-4311-9958-4decfae285b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\prng">
+      <UniqueIdentifier>{4d907f7b-338c-49fd-bf2e-a4c22dc2207b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\strings">
+      <UniqueIdentifier>{6b75700d-927a-46dd-a253-173cf3cbb310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\strings">
+      <UniqueIdentifier>{40fde5ec-10b2-43e2-b74f-09a2ccbe5a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\misc">
+      <UniqueIdentifier>{38f8d0e9-5a15-406b-ae47-2fb4381b5031}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\filesystem">
+      <UniqueIdentifier>{d3334059-d308-4df7-95b4-3ba32e727a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\filesystem">
+      <UniqueIdentifier>{486711a3-4cb5-4a4f-9cdd-1390d1e2d9b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\native">
+      <UniqueIdentifier>{87006369-b454-4628-a0a6-ab6fa798f8d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\native\vc_win">
+      <UniqueIdentifier>{cd146ea9-6173-4f46-b502-6749101e5c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\native">
+      <UniqueIdentifier>{780b852c-ba39-4392-a287-c85741269e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\native\vc_win">
+      <UniqueIdentifier>{a29553c6-c170-48ba-8869-3a9c77846f4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\prng">
+      <UniqueIdentifier>{7e311503-b9dd-4fd3-a8fc-44eb3fd79a63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\native\generic">
+      <UniqueIdentifier>{572d842f-a7f9-4e10-a2a4-9f7e1d137f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\native\generic">
+      <UniqueIdentifier>{5c6bf706-df3a-4d73-845e-44fdc1303487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\misc">
+      <UniqueIdentifier>{0b811208-1a9e-467a-b64c-846f166734f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\pch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utf8_codepoint.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utf8_iterator.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\chunked_list.hpp">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\chunked_list_const_iterator.hpp">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\chunked_list_iterator.hpp">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xorshift_128_plus.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xorshift_1024_star.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\split_mix_64.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xoroshiro_128_plus.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\binary_units.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\iirf.hpp">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\files.hpp">
+      <Filter>Header Files\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\paths.hpp">
+      <Filter>Header Files\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\path_glob.hpp">
+      <Filter>Header Files\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\native\vc_win\paths.hpp">
+      <Filter>Header Files\native\vc_win</Filter>
+    </ClInclude>
+    <ClInclude Include="include\service_split_mix_64.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fnv.hpp">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\service_xoroshiro_128_plus.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\service_xorshift_128_plus.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\service_xorshift_1024_star.hpp">
+      <Filter>Header Files\prng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\native\generic\paths.hpp">
+      <Filter>Header Files\native\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pointer_to_string.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util_autolink.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\keyword_parser.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ids.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parse_numeric_string.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\string_span.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utf8_codepoint.cpp">
+      <Filter>Source Files\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utf8_iterator.cpp">
+      <Filter>Source Files\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\binary_units.cpp">
+      <Filter>Source Files\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\files.cpp">
+      <Filter>Source Files\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\path_glob.cpp">
+      <Filter>Source Files\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\paths.cpp">
+      <Filter>Source Files\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\native\vc_win\paths.cpp">
+      <Filter>Source Files\native\vc_win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service_split_mix_64.cpp">
+      <Filter>Source Files\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service_xorshift_128_plus.cpp">
+      <Filter>Source Files\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service_xoroshiro_128_plus.cpp">
+      <Filter>Source Files\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service_xorshift_1024_star.cpp">
+      <Filter>Source Files\prng</Filter>
+    </ClCompile>
+    <ClCompile Include="src\native\generic\paths.cpp">
+      <Filter>Source Files\native\generic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fnv.cpp">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pointer_to_string.cpp">
+      <Filter>Source Files\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ids.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\chunked_list.inl">
+      <Filter>Header Files\containers</Filter>
+    </None>
+    <None Include="include\chunked_list_const_iterator.inl">
+      <Filter>Header Files\containers</Filter>
+    </None>
+    <None Include="include\chunked_list_iterator.inl">
+      <Filter>Header Files\containers</Filter>
+    </None>
+    <None Include="include\path_glob.inl">
+      <Filter>Header Files\filesystem</Filter>
+    </None>
+    <None Include="include\paths.inl">
+      <Filter>Header Files\filesystem</Filter>
+    </None>
+  </ItemGroup>
+</Project>
