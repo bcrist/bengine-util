@@ -2,7 +2,7 @@
 
 #include "xorshift_1024_star.hpp"
 #include "prng_test_util.hpp"
-#include <catch.hpp>
+#include <catch/catch.hpp>
 
 #define BE_CATCH_TAGS "[util][util:prng]"
 

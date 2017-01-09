@@ -1,6 +1,6 @@
 #ifdef BE_TEST
 
-#include <catch.hpp>
+#include <catch/catch.hpp>
 #include <functional>
 #include "chunked_list.hpp"
 

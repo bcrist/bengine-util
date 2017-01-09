@@ -1,7 +1,7 @@
 #ifdef BE_TEST
 
 #include "utf8_iterator.hpp"
-#include <catch.hpp>
+#include <catch/catch.hpp>
 
 #define BE_CATCH_TAGS "[util][util:string]"
 

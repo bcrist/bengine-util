@@ -2,7 +2,7 @@
 
 #include "split_mix_64.hpp"
 #include "prng_test_util.hpp"
-#include <catch.hpp>
+#include <catch/catch.hpp>
 
 #define BE_CATCH_TAGS "[util][util:prng]"
 

@@ -5,7 +5,7 @@
 #include <be/testing/arbitrary_builtins.hpp>
 #include <iostream>
 
-#include <catch.hpp>
+#include <catch/catch.hpp>
 
 #define BE_CATCH_TAGS "[util]"
 
