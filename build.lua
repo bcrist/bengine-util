@@ -9,6 +9,14 @@ module 'util' {
       define 'BE_UTIL_IMPL',
       link_project 'core',
    },
+   lib '-lua' {
+      src 'src-lua/*.cpp',
+      define 'BE_UTIL_LUA_IMPL',
+      link_project {
+         'belua',
+         'util'
+      }
+   },
    app '-test' {
       icon 'icon/bengine-test-perf.ico',
       link_project {
