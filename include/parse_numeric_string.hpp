@@ -34,9 +34,30 @@ struct ParseNumericString<T, true, false> {
          ++iter;
       }
 
-      if (iter < end && *iter == '%') {
-         val /= 100.f;
-         ++iter;
+      if (iter < end) {
+         if (*iter == '%') {
+            val /= 100.f;
+            ++iter;
+         } else if (*iter == '/') {
+            ++iter;
+            while (iter < end && boost::is_space()(*iter)) {
+               ++iter;
+            }
+
+            char* iter2;
+            F64 denom = strtod(iter, &iter2);
+
+            if (iter2 == iter) {
+               throw Recoverable<>("Denominator is not a floating-point value!");
+            }
+
+            val /= denom;
+            iter = iter2;
+
+            while (iter < end && boost::is_space()(*iter)) {
+               ++iter;
+            }
+         }
       }
 
       if (iter != end) {
@@ -111,21 +132,21 @@ parse_numeric_string(gsl::cstring_span<> value) {
 }
 
 template <typename T>
-std::enable_if_t<std::is_integral<T>::type, T>
+std::enable_if_t<std::is_integral<T>::value, T>
 parse_numeric_string(gsl::cstring_span<> value, I32 radix) {
    detail::ParseNumericString<T> func;
    return func(value, std::numeric_limits<T>::lowest(), std::numeric_limits<T>::max(), radix);
 }
 
 template <typename T>
-std::enable_if_t<std::is_integral<T>::type || std::is_floating_point<T>::type, T>
+std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, T>
 parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max) {
    detail::ParseNumericString<T> func;
    return func(value, min, max);
 }
 
 template <typename T>
-std::enable_if_t<std::is_integral<T>::type, T>
+std::enable_if_t<std::is_integral<T>::value, T>
 parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max, I32 radix) {
    detail::ParseNumericString<T> func;
    return func(value, min, max, radix);
