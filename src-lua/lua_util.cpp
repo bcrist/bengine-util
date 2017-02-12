@@ -398,16 +398,16 @@ int util_sprint_r_impl(lua_State* L) {
          extrabuf[extra] = '\0';
 
          lua_pop(L, 1); // pop key string
-         lua_pushcfunction(L, util_print_r_impl);
+         lua_pushcfunction(L, util_sprint_r_impl);
          lua_pushstring(L, temp.c_str());
          temp.resize(saved_size);
          temp += extrabuf;
          lua_pushstring(L, temp.c_str());
          lua_pushvalue(L, -4);   // value
          lua_pushvalue(L, 4);    // visited elements
-         lua_call(L, 4, 0);
-
-         lua_pop(L, 1); // remove value, keep key for next
+         lua_call(L, 4, 1);
+         output.append(lua_tostring(L, -1));
+         lua_pop(L, 2); // remove string, value, keep key for next
       }
 
       output.append(lua_tostring(L, 2));
