@@ -25,7 +25,7 @@ S get_file_contents_string(FILE* fd) {
 
 ///////////////////////////////////////////////////////////////////////////////
 Buf<UC> get_file_contents_buf(FILE* fd) {
-   return copy_buf<UC>(get_file_contents_string(fd));
+   return copy_buf<UC>(tmp_buf(get_file_contents_string(fd)));
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ Buf<UC> get_file_contents_buf(const Path& path) {
    size_t size = (size_t)ifs.tellg();
    retval = make_buf<UC>(size);
    ifs.seekg(0, std::ios::beg);
-   ifs.read(tmp_buf<char>(retval).get(), size);
+   ifs.read(Buf<char>(tmp_buf(retval)).get(), size);
 
    if (ifs.fail() || ifs.bad()) {
       throw std::ios::failure("Error while reading from file!");
@@ -103,7 +103,7 @@ void put_file_contents(const Path& path, const Buf<const UC>& contents) {
       throw std::ios::failure("Could not open file for writing!");
    }
 
-   ofs.write(tmp_buf<const char>(contents).get(), contents.size());
+   ofs.write(Buf<const char>(tmp_buf(contents)).get(), contents.size());
 
    if (ofs.fail() || ofs.bad()) {
       throw std::ios::failure("Error while writing to file!");
