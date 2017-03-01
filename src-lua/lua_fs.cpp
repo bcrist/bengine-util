@@ -69,6 +69,13 @@ int fs_is_dir(lua_State* L) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+int fs_create_dirs(lua_State* L) {
+   Path p(luaL_checkstring(L, 1));
+   lua_pushboolean(L, fs::create_directories(p));
+   return 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 int fs_path_stem(lua_State* L) {
    Path p(luaL_checkstring(L, 1));
    p = p.stem();
@@ -333,6 +340,7 @@ int open_fs(lua_State* L) {
       { "parent_path", fs_path_parent },
       { "ancestor_relative", fs_ancestor_relative },
       { "is_directory", fs_is_dir },
+      { "create_dirs", fs_create_dirs },
       { "path_stem", fs_path_stem },
       { "path_extension", fs_path_extension },
       { "replace_extension", fs_replace_extension },
