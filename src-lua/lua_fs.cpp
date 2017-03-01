@@ -303,6 +303,11 @@ int fs_glob(lua_State* L) {
    std::vector<Path> paths = util::glob(pattern, search_paths, type);
 
    lua_settop(L, 0);
+   if (paths.size() > (std::size_t)std::numeric_limits<int>::max() || !lua_checkstack(L, (int)paths.size())) {
+      luaL_error(L, "Too many paths to return on stack!");
+      // TODO consider returning a table (sequence) instead to avoid this issue
+   }
+
    for (Path& p : paths) {
       S str = p.string();
       lua_pushlstring(L, str.c_str(), str.length());
