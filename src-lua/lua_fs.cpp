@@ -258,7 +258,7 @@ int fs_glob(lua_State* L) {
 
    std::vector<Path> search_paths;
 
-   if (!lua_isnil(L, 2)) {
+   if (!lua_isnoneornil(L, 2)) {
       if (lua_type(L, 2) == LUA_TTABLE) {
          lua_pushnil(L);
          while (lua_next(L, 2) != 0) {
@@ -281,7 +281,7 @@ int fs_glob(lua_State* L) {
 
    util::PathMatchType type = util::PathMatchType::all;
 
-   if (!lua_isnil(L, 3)) {
+   if (!lua_isnoneornil(L, 3)) {
       U8 type_mask = 0;
       ptr = lua_tolstring(L, 3, &len);
       S typestr(ptr, len);
@@ -336,6 +336,47 @@ int fs_put_file_contents(lua_State* L) {
    return 0;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// function resolve_path (path, search_paths, include_cwd)
+int fs_resolve_path(lua_State* L) {
+   if (lua_isnoneornil(L, 1)) {
+      return 0;
+   }
+
+   Path input_path(luaL_checkstring(L, 1));
+
+   if (!lua_isnoneornil(L, 2)) {
+      if (lua_type(L, 2) == LUA_TTABLE) {
+         lua_pushnil(L);
+         while (lua_next(L, 2) != 0) {
+            lua_pushcfunction(L, fs_resolve_path);
+            lua_pushvalue(L, 1);
+            lua_pushvalue(L, -3);
+            lua_call(L, 2, 1); // resolve_path(input_path, search_paths[k])
+            if (!lua_isnoneornil(L, -1)) {
+               return 1;
+            }
+            lua_pop(L, 2); // value, and returned nil
+         }
+      } else {
+         Path path(luaL_checkstring(L, 2));
+         path /= input_path;
+
+         if (fs::exists(path)) {
+            lua_pushstring(L, path.string().c_str());
+            return 1;
+         }
+      }
+   }
+
+   if (lua_toboolean(L, 3) != 0 && fs::exists(input_path)) {
+      lua_settop(L, 1);
+      return 1;
+   }
+
+   return 0;
+}
+
 } // be::belua::()
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -363,6 +404,7 @@ int open_fs(lua_State* L) {
       { "glob", fs_glob },
       { "get_file_contents", fs_get_file_contents },
       { "put_file_contents", fs_put_file_contents },
+      { "resolve_path", fs_resolve_path },
       { nullptr, nullptr }
    };
 
