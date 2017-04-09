@@ -45,6 +45,7 @@
     <ClCompile Include="perf\associative_containers.cpp" />
     <ClCompile Include="perf\perf_main.cpp" />
     <ClCompile Include="perf\sequence_containers.cpp" />
+    <ClCompile Include="perf\version.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

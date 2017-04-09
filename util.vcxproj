@@ -79,6 +79,7 @@
     <ClInclude Include="include\utf8_iterator.hpp" />
     <ClInclude Include="include\util_autolink.hpp" />
     <ClInclude Include="include\ids.hpp" />
+    <ClInclude Include="include\version.hpp" />
     <ClInclude Include="include\xoroshiro_128_plus.hpp" />
     <ClInclude Include="include\xorshift_1024_star.hpp" />
     <ClInclude Include="include\xorshift_128_plus.hpp" />

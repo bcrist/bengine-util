@@ -16,5 +16,6 @@
     <ClCompile Include="perf\associative_containers.cpp">
       <Filter>Tests\containers</Filter>
     </ClCompile>
+    <ClCompile Include="perf\version.cpp" />
   </ItemGroup>
 </Project>
