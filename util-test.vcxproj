@@ -53,6 +53,7 @@
     <ClCompile Include="test\test_xoroshiro_128_plus.cpp" />
     <ClCompile Include="test\test_xorshift_1024_star.cpp" />
     <ClCompile Include="test\test_xorshift_128_plus.cpp" />
+    <ClCompile Include="test\version.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
