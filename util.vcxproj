@@ -55,11 +55,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\binary_units.hpp" />
+    <ClInclude Include="include\check_file_signature.hpp" />
     <ClInclude Include="include\chunked_list.hpp" />
     <ClInclude Include="include\chunked_list_const_iterator.hpp" />
     <ClInclude Include="include\chunked_list_iterator.hpp" />
     <ClInclude Include="include\files.hpp" />
     <ClInclude Include="include\fnv.hpp" />
+    <ClInclude Include="include\parse_string_error.hpp" />
     <ClInclude Include="include\string_span.hpp" />
     <ClInclude Include="include\iirf.hpp" />
     <ClInclude Include="include\keyword_parser.hpp" />
@@ -83,6 +85,7 @@
     <ClInclude Include="include\xoroshiro_128_plus.hpp" />
     <ClInclude Include="include\xorshift_1024_star.hpp" />
     <ClInclude Include="include\xorshift_128_plus.hpp" />
+    <ClInclude Include="meta\parse_string_error.lua" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\binary_units.cpp" />
@@ -90,6 +93,7 @@
     <ClCompile Include="src\fnv.cpp" />
     <ClCompile Include="src\native\generic\paths.cpp" />
     <ClCompile Include="src\native\vc_win\paths.cpp" />
+    <ClCompile Include="src\parse_string_error.cpp" />
     <ClCompile Include="src\paths.cpp" />
     <ClCompile Include="src\path_glob.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -108,6 +112,7 @@
     <None Include="include\chunked_list.inl" />
     <None Include="include\chunked_list_const_iterator.inl" />
     <None Include="include\chunked_list_iterator.inl" />
+    <None Include="include\parse_numeric_string.inl" />
     <None Include="include\paths.inl" />
     <None Include="include\path_glob.inl" />
   </ItemGroup>

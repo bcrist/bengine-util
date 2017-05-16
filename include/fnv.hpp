@@ -32,7 +32,7 @@ struct ConstexprFnv {
    }
 
    constexpr T operator()(T v, const char* ptr) const {
-      return *ptr ? ConstexprFnv<T>()((v ^ U8(*ptr)) * M, ptr + 1) : v;
+      return *ptr ? ConstexprFnv<T>()((v * M) ^ U8(*ptr), ptr + 1) : v;
    }
 };
 

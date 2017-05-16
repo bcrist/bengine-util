@@ -54,6 +54,9 @@
     <Filter Include="Source Files\misc">
       <UniqueIdentifier>{0b811208-1a9e-467a-b64c-846f166734f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Meta-Source Files">
+      <UniqueIdentifier>{af441bfe-dd5d-4502-a5f5-3093a2992089}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\pch.hpp">
@@ -143,6 +146,15 @@
     <ClInclude Include="include\version.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\check_file_signature.hpp">
+      <Filter>Header Files\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="meta\parse_string_error.lua">
+      <Filter>Meta-Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parse_string_error.hpp">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -193,6 +205,9 @@
     <ClCompile Include="src\ids.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\parse_string_error.cpp">
+      <Filter>Source Files\strings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\chunked_list.inl">
@@ -209,6 +224,9 @@
     </None>
     <None Include="include\paths.inl">
       <Filter>Header Files\filesystem</Filter>
+    </None>
+    <None Include="include\parse_numeric_string.inl">
+      <Filter>Header Files\strings</Filter>
     </None>
   </ItemGroup>
 </Project>
