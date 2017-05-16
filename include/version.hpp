@@ -6,7 +6,7 @@
 
 #define BE_UTIL_VERSION_MAJOR 0
 #define BE_UTIL_VERSION_MINOR 1
-#define BE_UTIL_VERSION_REV 3
+#define BE_UTIL_VERSION_REV 4
 
 /*!! include('common/version', 'be::util') !! 6 */
 /* ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# */

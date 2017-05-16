@@ -54,6 +54,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\base64_decode.hpp" />
+    <ClInclude Include="include\base64_encode.hpp" />
     <ClInclude Include="include\binary_units.hpp" />
     <ClInclude Include="include\check_file_signature.hpp" />
     <ClInclude Include="include\chunked_list.hpp" />
@@ -109,6 +111,8 @@
     <ClCompile Include="src\ids.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="include\base64_decode.inl" />
+    <None Include="include\base64_encode.inl" />
     <None Include="include\chunked_list.inl" />
     <None Include="include\chunked_list_const_iterator.inl" />
     <None Include="include\chunked_list_iterator.inl" />

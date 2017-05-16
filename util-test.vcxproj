@@ -45,6 +45,7 @@
     <ClInclude Include="test\prng_test_util.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="test\test_base64.cpp" />
     <ClCompile Include="test\test_binary_units.cpp" />
     <ClCompile Include="test\test_chunked_list.cpp" />
     <ClCompile Include="test\test_split_mix_64.cpp" />
