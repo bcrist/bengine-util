@@ -1,12 +1,11 @@
 #pragma once
-#ifndef BE_UTIL_UTF8_CODEPOINT_HPP_
-#define BE_UTIL_UTF8_CODEPOINT_HPP_
+#ifndef BE_UTIL_STRING_UTF8_CODEPOINT_HPP_
+#define BE_UTIL_STRING_UTF8_CODEPOINT_HPP_
 
-#include "util_autolink.hpp"
+#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief  Allows integral UCS codepoints to be converted to their UTF-8
@@ -35,6 +34,5 @@ private:
 };
 
 } // be::util
-} // be
 
 #endif

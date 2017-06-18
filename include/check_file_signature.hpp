@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BE_UTIL_CHECK_FILE_SIGNATURE_HPP_
-#define BE_UTIL_CHECK_FILE_SIGNATURE_HPP_
+#ifndef BE_UTIL_FS_CHECK_FILE_SIGNATURE_HPP_
+#define BE_UTIL_FS_CHECK_FILE_SIGNATURE_HPP_
 
 #include <be/core/buf.hpp>
 

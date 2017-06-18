@@ -1,13 +1,12 @@
 #pragma once
-#ifndef BE_UTIL_XORSHIFT_128_PLUS_HPP_
-#define BE_UTIL_XORSHIFT_128_PLUS_HPP_
+#ifndef BE_UTIL_PRNG_XORSHIFT_128_PLUS_HPP_
+#define BE_UTIL_PRNG_XORSHIFT_128_PLUS_HPP_
 
 #include "split_mix_64.hpp"
 #include <limits>
 #include <cassert>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 class Xorshift128PlusState {
@@ -257,13 +256,8 @@ std::basic_istream<E, T>& operator>>(std::basic_istream<E, T>& is, Xorshift128Pl
    return is;
 }
 
+using xs128p = Xorshift128Plus<>;
+
 } // be::util
-
-namespace rnd {
-
-using xs128p = util::Xorshift128Plus<>;
-
-} // be::rnd
-} // be
 
 #endif

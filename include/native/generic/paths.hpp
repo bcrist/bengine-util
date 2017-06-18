@@ -1,5 +1,0 @@
-#pragma once
-#ifndef BE_UTIL_NATIVE_GENERIC_PATHS_HPP_
-#define BE_UTIL_NATIVE_GENERIC_PATHS_HPP_
-
-#endif

@@ -5,5 +5,6 @@
 #include "lua_util.hpp"
 #include "lua_fs.hpp"
 #include "lua_fnv256.hpp"
+#include "lua_interpolate_string.hpp"
 
 #endif

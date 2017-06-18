@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BE_UTIL_BASE64_ENCODE_HPP_
-#define BE_UTIL_BASE64_ENCODE_HPP_
+#ifndef BE_UTIL_STRING_BASE64_ENCODE_HPP_
+#define BE_UTIL_STRING_BASE64_ENCODE_HPP_
 
 #include <be/core/buf.hpp>
 

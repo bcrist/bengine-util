@@ -2,13 +2,12 @@
 #ifndef BE_UTIL_CHUNKED_LIST_HPP_
 #define BE_UTIL_CHUNKED_LIST_HPP_
 
+#include "chunked_list_iterator.hpp"
 #include <be/core/t_container_types.hpp>
 #include <be/core/t_is_iterator.hpp>
 #include <be/core/small_triplet.hpp>
-#include "chunked_list_iterator.hpp"
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -372,7 +371,6 @@ bool operator>(ChunkedList<T, A, N, M, S>& left, ChunkedList<T, A, N, M, S>& rig
 //};
 
 } // be::util
-} // be
 
 #include "chunked_list.inl"
 

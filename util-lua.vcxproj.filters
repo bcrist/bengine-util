@@ -14,9 +14,6 @@
     <ClInclude Include="include\lua_modules.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\lua_util_autolink.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\lua_fnv256.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -24,6 +21,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\lua_util.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua_interpolate_string.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util_lua_autolink.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,6 +38,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src-lua\lua_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-lua\lua_interpolate_string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

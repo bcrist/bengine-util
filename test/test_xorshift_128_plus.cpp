@@ -72,8 +72,8 @@ TEST_CASE("util::Xorshift128Plus parameters & basic usage", BE_CATCH_TAGS) {
    REQUIRE(Xorshift128Plus<>::min() == std::numeric_limits<U64>::min());
    REQUIRE(Xorshift128Plus<>::max() == std::numeric_limits<U64>::max());
 
-   rnd::xs128p prng;
-   rnd::xs128p::state_type state { 16490336266968443936ull, 16834447057089888969ull };
+   util::xs128p prng;
+   util::xs128p::state_type state { 16490336266968443936ull, 16834447057089888969ull };
 
    REQUIRE(prng.state() == state);
    REQUIRE(prng() == 11180128869114632943ULL);
@@ -103,7 +103,7 @@ TEST_CASE("util::Xorshift128Plus seed sequences", BE_CATCH_TAGS) {
 
    SECTION("DummySSeq") {
       DummySSeq dsseq([]() { return (U32)0x12345678U; });
-      rnd::xs128p::state_type state { 0x1234567812345678ULL, 0x1234567812345678ULL };
+      util::xs128p::state_type state { 0x1234567812345678ULL, 0x1234567812345678ULL };
       REQUIRE(Xorshift128Plus<>(dsseq).state() == state);
    }
 }
@@ -112,7 +112,7 @@ TEST_CASE("util::Xorshift128Plus seed from generator", BE_CATCH_TAGS) {
    SECTION("U32 generator") {
       DummyGen<U32> dgen([]() { return (U32)0x8b8bff00; });
       Xorshift128Plus<> prng;
-      rnd::xs128p::state_type state { 0x8b8bff008b8bff00ULL, 0x8b8bff008b8bff00ULL };
+      util::xs128p::state_type state { 0x8b8bff008b8bff00ULL, 0x8b8bff008b8bff00ULL };
       prng.seed(dgen);
       REQUIRE(prng.state() == state);
    }
@@ -120,7 +120,7 @@ TEST_CASE("util::Xorshift128Plus seed from generator", BE_CATCH_TAGS) {
    SECTION("U64 generator") {
       DummyGen<U64> dgen([]() { return (U64)0x8b8bff0012344321ULL; });
       Xorshift128Plus<> prng;
-      rnd::xs128p::state_type state { 0x8b8bff0012344321ULL, 0x8b8bff0012344321ULL };
+      util::xs128p::state_type state { 0x8b8bff0012344321ULL, 0x8b8bff0012344321ULL };
       prng.seed(dgen);
       REQUIRE(prng.state() == state);
    }
@@ -167,7 +167,7 @@ TEST_CASE("util::Xorshift128Plus copy construction & assignment", BE_CATCH_TAGS)
    }
 
    SECTION("Assignment of zero state") {
-      rnd::xs128p::state_type state { 0 };
+      util::xs128p::state_type state { 0 };
       prng = state;
       REQUIRE(prng.state() != state);
       REQUIRE(prng() != 0);
@@ -202,7 +202,7 @@ TEST_CASE("util::Xorshift128Plus jump()", BE_CATCH_TAGS) {
    prng.seed(dgen);
    Xorshift128Plus<> prng2(prng);
 
-   rnd::xs128p::state_type s1, s2;
+   util::xs128p::state_type s1, s2;
 
    memset(vigna::s, 0xFF, sizeof(vigna::s));
    vigna::next();

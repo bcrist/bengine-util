@@ -1,13 +1,13 @@
 #pragma once
-#ifndef BE_UTIL_PATHS_HPP_
-#define BE_UTIL_PATHS_HPP_
+#ifndef BE_UTIL_FS_PATHS_HPP_
+#define BE_UTIL_FS_PATHS_HPP_
 
-#include "util_autolink.hpp"
+#include "util_fs_autolink.hpp"
+#include "util_prng_autolink.hpp"
 #include <be/core/be.hpp>
 #include <be/core/filesystem.hpp>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 enum class SpecialPath : U8 {
    temp,
@@ -49,10 +49,7 @@ Path find_file(const Path& filename, I begin, I end);
 template <typename C>
 Path find_file(const Path& filename, const C& search_paths);
 
-} // namespace be::util
-} // namespace be
-
-#include BE_NATIVE(util, paths.hpp)
+} // be::util
 
 #include "paths.inl"
 

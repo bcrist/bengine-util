@@ -7,7 +7,7 @@
 
 #include <catch/catch.hpp>
 
-#define BE_CATCH_TAGS "[util]"
+#define BE_CATCH_TAGS "[util][util:string]"
 
 using namespace be;
 

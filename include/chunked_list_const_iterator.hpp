@@ -2,11 +2,9 @@
 #ifndef BE_UTIL_CHUNKED_LIST_CONST_ITERATOR_HPP_
 #define BE_UTIL_CHUNKED_LIST_CONST_ITERATOR_HPP_
 
-#include "util_autolink.hpp"
 #include <cassert>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 template <typename C>
@@ -59,7 +57,6 @@ ChunkedListConstIterator<C> operator+(typename ChunkedListConstIterator<C>::diff
 
 } // be::util::detail
 } // be::util
-} // be
 
 #include "chunked_list_const_iterator.inl"
 

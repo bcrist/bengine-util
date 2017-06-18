@@ -72,8 +72,8 @@ TEST_CASE("util::Xorshift1024Star parameters & basic usage", BE_CATCH_TAGS) {
    REQUIRE(Xorshift1024Star<>::min() == std::numeric_limits<U64>::min());
    REQUIRE(Xorshift1024Star<>::max() == std::numeric_limits<U64>::max());
 
-   rnd::xs1024s prng;
-   rnd::xs1024s::state_type state {{
+   util::xs1024s prng;
+   util::xs1024s::state_type state {{
          16490336266968443936ull, 16834447057089888969ull,
          4048727598324417001ull, 7862637804313477842ull,
          13015481187462834606ull, 15212506146343009075ull,
@@ -112,7 +112,7 @@ TEST_CASE("util::Xorshift1024Star seed sequences", BE_CATCH_TAGS) {
 
    SECTION("DummySSeq") {
       DummySSeq dsseq([]() { return (U32)0x12345678U; });
-      rnd::xs1024s::state_type state { {
+      util::xs1024s::state_type state { {
             0x1234567812345678ULL, 0x1234567812345678ULL,
             0x1234567812345678ULL, 0x1234567812345678ULL,
             0x1234567812345678ULL, 0x1234567812345678ULL,
@@ -130,7 +130,7 @@ TEST_CASE("util::Xorshift1024Star seed from generator", BE_CATCH_TAGS) {
    SECTION("U32 generator") {
       DummyGen<U32> dgen([]() { return (U32)0x8b8bff00; });
       Xorshift1024Star<> prng;
-      rnd::xs1024s::state_type state { {
+      util::xs1024s::state_type state { {
             0x8b8bff008b8bff00ULL, 0x8b8bff008b8bff00ULL,
             0x8b8bff008b8bff00ULL, 0x8b8bff008b8bff00ULL,
             0x8b8bff008b8bff00ULL, 0x8b8bff008b8bff00ULL,
@@ -148,7 +148,7 @@ TEST_CASE("util::Xorshift1024Star seed from generator", BE_CATCH_TAGS) {
       DummyGen<U64> dgen([]() { return (U64)0x8b8bff0012344321ULL; });
       Xorshift1024Star<> prng;
       prng(); // verify that index gets reset.
-      rnd::xs1024s::state_type state { {
+      util::xs1024s::state_type state { {
             0x8b8bff0012344321ULL, 0x8b8bff0012344321ULL,
             0x8b8bff0012344321ULL, 0x8b8bff0012344321ULL,
             0x8b8bff0012344321ULL, 0x8b8bff0012344321ULL,
@@ -204,7 +204,7 @@ TEST_CASE("util::Xorshift1024Star copy construction & assignment", BE_CATCH_TAGS
    }
 
    SECTION("Assignment of zero state") {
-      rnd::xs1024s::state_type state { { 0 }, 0 };
+      util::xs1024s::state_type state { { 0 }, 0 };
       prng = state;
       REQUIRE(prng.state() != state);
       REQUIRE(prng() != 0);
@@ -239,7 +239,7 @@ TEST_CASE("util::Xorshift1024Star jump()", BE_CATCH_TAGS) {
    prng.seed(dgen);
    Xorshift1024Star<> prng2(prng);
 
-   rnd::xs1024s::state_type s1, s2;
+   util::xs1024s::state_type s1, s2;
    
    memset(vigna::s, 0xFF, sizeof(vigna::s));
    vigna::p = 0;
@@ -282,8 +282,8 @@ TEST_CASE("util::Xorshift1024Star comparison operators", BE_CATCH_TAGS) {
    REQUIRE(prng.state() != prng2.state());
 
    SECTION("Equality of states regardless of circular-buffer rotation") {
-      rnd::xs1024s::state_type s1 {{ 1, 2, 3 }, 0 };
-      rnd::xs1024s::state_type s2 {{ 0, 1, 2, 3 }, 1 };
+      util::xs1024s::state_type s1 {{ 1, 2, 3 }, 0 };
+      util::xs1024s::state_type s2 {{ 0, 1, 2, 3 }, 1 };
 
       REQUIRE(s1 == s2);
    }

@@ -4,8 +4,7 @@
 #include <sstream>
 #include <iomanip>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -149,4 +148,3 @@ S fnv256_1a(gsl::cstring_span<> input) {
 }
 
 } // be::util
-} // be

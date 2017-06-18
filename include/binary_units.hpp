@@ -1,11 +1,10 @@
-#ifndef BE_UTIL_BINARY_UNITS_HPP_
-#define BE_UTIL_BINARY_UNITS_HPP_
+#ifndef BE_UTIL_STRING_BINARY_UNITS_HPP_
+#define BE_UTIL_STRING_BINARY_UNITS_HPP_
 
-#include "util_autolink.hpp"
+#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 struct BinaryUnitStringFormat {
    const char* suffixes = "KMGTPE";
@@ -28,6 +27,5 @@ inline const BinaryUnitStringFormat& default_binary_unit_string_format() {
 S binary_unit_string(I64 value, const BinaryUnitStringFormat& format = detail::default_binary_unit_string_format());
 
 } // be::util
-} // be
 
 #endif

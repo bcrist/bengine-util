@@ -6,8 +6,7 @@
 #include <be/core/be.hpp>
 #include <gsl/string_span>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -122,7 +121,6 @@ S fnv256_1(gsl::cstring_span<> input);
 S fnv256_1a(gsl::cstring_span<> input);
 
 } // be::util
-} // be
 
 #endif
 

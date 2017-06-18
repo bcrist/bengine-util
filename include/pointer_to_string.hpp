@@ -1,12 +1,11 @@
 #pragma once
-#ifndef BE_UTIL_POINTER_TO_STRING_HPP_
-#define BE_UTIL_POINTER_TO_STRING_HPP_
+#ifndef BE_UTIL_STRING_POINTER_TO_STRING_HPP_
+#define BE_UTIL_STRING_POINTER_TO_STRING_HPP_
 
-#include "util_autolink.hpp"
+#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 S pointer_address(U16 ptr, SizeTag<U16>);
@@ -21,6 +20,5 @@ S get_pointer_address_string(const T* ptr) {
 }
 
 } // be::util
-} // be
 
 #endif

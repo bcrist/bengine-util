@@ -54,71 +54,25 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\base64_decode.hpp" />
-    <ClInclude Include="include\base64_encode.hpp" />
-    <ClInclude Include="include\binary_units.hpp" />
-    <ClInclude Include="include\check_file_signature.hpp" />
     <ClInclude Include="include\chunked_list.hpp" />
     <ClInclude Include="include\chunked_list_const_iterator.hpp" />
     <ClInclude Include="include\chunked_list_iterator.hpp" />
-    <ClInclude Include="include\files.hpp" />
     <ClInclude Include="include\fnv.hpp" />
-    <ClInclude Include="include\parse_string_error.hpp" />
-    <ClInclude Include="include\string_span.hpp" />
     <ClInclude Include="include\iirf.hpp" />
-    <ClInclude Include="include\keyword_parser.hpp" />
-    <ClInclude Include="include\native\generic\paths.hpp" />
-    <ClInclude Include="include\native\vc_win\paths.hpp" />
-    <ClInclude Include="include\parse_numeric_string.hpp" />
-    <ClInclude Include="include\paths.hpp" />
-    <ClInclude Include="include\path_glob.hpp" />
-    <ClInclude Include="include\pch.hpp" />
-    <ClInclude Include="include\pointer_to_string.hpp" />
-    <ClInclude Include="include\service_split_mix_64.hpp" />
-    <ClInclude Include="include\service_xoroshiro_128_plus.hpp" />
-    <ClInclude Include="include\service_xorshift_1024_star.hpp" />
-    <ClInclude Include="include\service_xorshift_128_plus.hpp" />
-    <ClInclude Include="include\split_mix_64.hpp" />
-    <ClInclude Include="include\utf8_codepoint.hpp" />
-    <ClInclude Include="include\utf8_iterator.hpp" />
     <ClInclude Include="include\util_autolink.hpp" />
-    <ClInclude Include="include\ids.hpp" />
     <ClInclude Include="include\version.hpp" />
-    <ClInclude Include="include\xoroshiro_128_plus.hpp" />
-    <ClInclude Include="include\xorshift_1024_star.hpp" />
-    <ClInclude Include="include\xorshift_128_plus.hpp" />
-    <ClInclude Include="meta\parse_string_error.lua" />
+    <ClInclude Include="src\pch.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\binary_units.cpp" />
-    <ClCompile Include="src\files.cpp" />
     <ClCompile Include="src\fnv.cpp" />
-    <ClCompile Include="src\native\generic\paths.cpp" />
-    <ClCompile Include="src\native\vc_win\paths.cpp" />
-    <ClCompile Include="src\parse_string_error.cpp" />
-    <ClCompile Include="src\paths.cpp" />
-    <ClCompile Include="src\path_glob.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\pointer_to_string.cpp" />
-    <ClCompile Include="src\service_split_mix_64.cpp" />
-    <ClCompile Include="src\service_xoroshiro_128_plus.cpp" />
-    <ClCompile Include="src\service_xorshift_1024_star.cpp" />
-    <ClCompile Include="src\service_xorshift_128_plus.cpp" />
-    <ClCompile Include="src\utf8_codepoint.cpp" />
-    <ClCompile Include="src\utf8_iterator.cpp" />
-    <ClCompile Include="src\ids.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="include\base64_decode.inl" />
-    <None Include="include\base64_encode.inl" />
     <None Include="include\chunked_list.inl" />
     <None Include="include\chunked_list_const_iterator.inl" />
     <None Include="include\chunked_list_iterator.inl" />
-    <None Include="include\parse_numeric_string.inl" />
-    <None Include="include\paths.inl" />
-    <None Include="include\path_glob.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

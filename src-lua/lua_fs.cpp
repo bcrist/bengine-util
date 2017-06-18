@@ -4,8 +4,7 @@
 #include <be/util/path_glob.hpp>
 #include <be/util/files.hpp>
 
-namespace be {
-namespace belua {
+namespace be::belua {
 
 ///////////////////////////////////////////////////////////////////////////////
 const luaL_Reg fs_module { "be.fs", open_fs };
@@ -320,9 +319,14 @@ int fs_glob(lua_State* L) {
 int fs_get_file_contents(lua_State* L) {
    Path filename(luaL_checkstring(L, 1));
 
-   S data = util::get_file_contents_string(filename);
+   auto result = util::get_file_contents_string(filename);
 
-   lua_pushlstring(L, data.c_str(), data.length());
+   if (result.second != util::FileReadError::none) {
+      luaL_error(L, util::file_read_error_name(result.second));
+   } else {
+      lua_pushlstring(L, result.first.c_str(), result.first.length());
+   }
+   
    return 1;
 }
 
@@ -413,4 +417,3 @@ int open_fs(lua_State* L) {
 }
 
 } // be::belua
-} // be

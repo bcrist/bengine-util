@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Meta-Source Files">
+      <UniqueIdentifier>{af441bfe-dd5d-4502-a5f5-3093a2992089}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\native">
+      <UniqueIdentifier>{eee43153-fe51-43ff-8780-f3f42d01dafc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\native\vc_win">
+      <UniqueIdentifier>{79dac8c6-4f5b-4a9c-8976-5b920966ba80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\base64">
+      <UniqueIdentifier>{879d0bd5-1c13-4c10-ba5e-40cd255d7eb7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src-string\pch.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\binary_units.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\keyword_parser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parse_numeric_string.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parse_string_error.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pointer_to_string.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\string_span.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utf8_codepoint.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utf8_iterator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utf16_widen_narrow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base64_decode.hpp">
+      <Filter>Header Files\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base64_encode.hpp">
+      <Filter>Header Files\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interpolate_string.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util_string_autolink.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src-string\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-string\binary_units.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-string\parse_string_error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-string\pointer_to_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-string\utf8_codepoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-string\utf8_iterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-string\native\vc_win\utf16_widen_narrow.cpp">
+      <Filter>Source Files\native\vc_win</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\parse_numeric_string.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="meta\parse_string_error.lua">
+      <Filter>Meta-Source Files</Filter>
+    </None>
+    <None Include="include\base64_decode.inl">
+      <Filter>Header Files\base64</Filter>
+    </None>
+    <None Include="include\base64_encode.inl">
+      <Filter>Header Files\base64</Filter>
+    </None>
+    <None Include="include\interpolate_string.inl">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

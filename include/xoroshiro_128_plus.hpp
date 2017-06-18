@@ -1,13 +1,12 @@
 #pragma once
-#ifndef BE_UTIL_XOROSHIRO_128_PLUS_HPP_
-#define BE_UTIL_XOROSHIRO_128_PLUS_HPP_
+#ifndef BE_UTIL_PRNG_XOROSHIRO_128_PLUS_HPP_
+#define BE_UTIL_PRNG_XOROSHIRO_128_PLUS_HPP_
 
 #include "split_mix_64.hpp"
 #include <limits>
 #include <cassert>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 class Xoroshiro128PlusState {
@@ -260,13 +259,8 @@ std::basic_istream<E, T>& operator>>(std::basic_istream<E, T>& is, Xoroshiro128P
    return is;
 }
 
+using xo128p = Xoroshiro128Plus<>;
+
 } // be::util
-
-namespace rnd {
-
-using xo128p = util::Xoroshiro128Plus<>;
-
-} // be::rnd
-} // be
 
 #endif

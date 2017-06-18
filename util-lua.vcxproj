@@ -54,13 +54,15 @@
   <ItemGroup>
     <ClInclude Include="include\lua_fnv256.hpp" />
     <ClInclude Include="include\lua_fs.hpp" />
-    <ClInclude Include="include\lua_util_autolink.hpp" />
+    <ClInclude Include="include\lua_interpolate_string.hpp" />
+    <ClInclude Include="include\util_lua_autolink.hpp" />
     <ClInclude Include="include\lua_modules.hpp" />
     <ClInclude Include="include\lua_util.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src-lua\lua_fnv256.cpp" />
     <ClCompile Include="src-lua\lua_fs.cpp" />
+    <ClCompile Include="src-lua\lua_interpolate_string.cpp" />
     <ClCompile Include="src-lua\lua_util.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

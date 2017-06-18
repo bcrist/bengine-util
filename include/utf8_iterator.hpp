@@ -1,12 +1,11 @@
 #pragma once
-#ifndef BE_UTIL_UTF8_ITERATOR_HPP_
-#define BE_UTIL_UTF8_ITERATOR_HPP_
+#ifndef BE_UTIL_STRING_UTF8_ITERATOR_HPP_
+#define BE_UTIL_STRING_UTF8_ITERATOR_HPP_
 
-#include "util_autolink.hpp"
+#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief  S::const_iterator adapter for iterating over the UCS
@@ -121,6 +120,5 @@ bool operator!=(const Utf8Iterator& a, const S::iterator& b) noexcept;
 const char* get_name(Utf8Iterator::error_type error) noexcept;
 
 } // be::util
-} // be
 
 #endif

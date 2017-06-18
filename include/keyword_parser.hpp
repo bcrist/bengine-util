@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BE_UTIL_KEYWORD_PARSER_HPP_
-#define BE_UTIL_KEYWORD_PARSER_HPP_
+#ifndef BE_UTIL_STRING_KEYWORD_PARSER_HPP_
+#define BE_UTIL_STRING_KEYWORD_PARSER_HPP_
 
 #include "string_span.hpp"
 #include "parse_string_error.hpp"
@@ -12,8 +12,7 @@
 #include <vector>
 #include <array>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -147,6 +146,5 @@ template <typename E = int, typename F = detail::ExactKeywordTransform>
 using ExactKeywordParser = KeywordParser<E, F, detail::ExactKeywordEnumerator>;
 
 } // be::util
-} // be
 
 #endif

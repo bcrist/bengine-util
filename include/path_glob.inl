@@ -1,10 +1,9 @@
-#if !defined(BE_UTIL_PATH_GLOB_HPP_) && !defined(DOXYGEN)
+#if !defined(BE_UTIL_FS_PATH_GLOB_HPP_) && !defined(DOXYGEN)
 #include "path_glob.hpp"
-#elif !defined(BE_UTIL_PATH_GLOB_INL_)
-#define BE_UTIL_PATH_GLOB_INL_
+#elif !defined(BE_FS_UTIL_PATH_GLOB_INL_)
+#define BE_FS_UTIL_PATH_GLOB_INL_
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -258,7 +257,6 @@ std::vector<Path> greb(const S& pattern, const C& search_paths, PathMatchType ma
    return greb(pattern, std::begin(search_paths), std::end(search_paths), match_type);
 }
 
-} // namespace be::util
-} // namespace be
+} // be::util
 
 #endif

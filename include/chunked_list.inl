@@ -3,8 +3,7 @@
 #elif !defined(BE_UTIL_CHUNKED_LIST_INL_)
 #define BE_UTIL_CHUNKED_LIST_INL_
 
-namespace be {
-namespace util {
+namespace be::util {
 
 #pragma region construction/destruction
 
@@ -1454,6 +1453,5 @@ bool operator>=(ChunkedList<T, A, N, M, S>& left, ChunkedList<T, A, N, M, S>& ri
 #pragma endregion
 
 } // be::util
-} // be
 
 #endif

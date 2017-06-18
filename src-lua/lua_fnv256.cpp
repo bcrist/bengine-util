@@ -1,8 +1,7 @@
 #include "lua_fnv256.hpp"
 #include <be/util/fnv.hpp>
 
-namespace be {
-namespace belua {
+namespace be::belua {
 
 ///////////////////////////////////////////////////////////////////////////////
 const luaL_Reg fnv256_module { "be.fnv256", open_fnv256 };
@@ -77,4 +76,3 @@ int open_fnv256(lua_State* L) {
 }
 
 } // be::belua
-} // be

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BE_UTIL_BASE64_DECODE_HPP_
-#define BE_UTIL_BASE64_DECODE_HPP_
+#ifndef BE_UTIL_STRING_BASE64_DECODE_HPP_
+#define BE_UTIL_STRING_BASE64_DECODE_HPP_
 
 #include <be/core/buf.hpp>
 #include <gsl/string_span>

@@ -1,11 +1,9 @@
 #ifndef BE_UTIL_IIRF_HPP
 #define BE_UTIL_IIRF_HPP
 
-#include "util_autolink.hpp"
 #include <be/core/be.hpp>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 template <typename T, std::size_t DivisorBits = 4>
 struct FastDiscreteInfiniteImpulseResponseFilter {
@@ -15,6 +13,5 @@ struct FastDiscreteInfiniteImpulseResponseFilter {
 };
 
 } // be::util
-} // be
 
 #endif

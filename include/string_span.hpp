@@ -1,8 +1,7 @@
 #pragma once
-#ifndef BE_UTIL_STRING_SPAN_HPP_
-#define BE_UTIL_STRING_SPAN_HPP_
+#ifndef BE_UTIL_STRING_STRING_SPAN_HPP_
+#define BE_UTIL_STRING_STRING_SPAN_HPP_
 
-#include "util_autolink.hpp"
 #include <be/core/alg.hpp>
 #include <gsl/string_span>
 

@@ -1,7 +1,7 @@
-#if !defined(BE_UTIL_BASE64_ENCODE_HPP_) && !defined(DOXYGEN)
+#if !defined(BE_UTIL_STRING_BASE64_ENCODE_HPP_) && !defined(DOXYGEN)
 #include "base64_encode.hpp"
-#elif !defined(BE_UTIL_BASE64_ENCODE_INL_)
-#define BE_UTIL_BASE64_ENCODE_INL_
+#elif !defined(BE_UTIL_STRING_BASE64_ENCODE_INL_)
+#define BE_UTIL_STRING_BASE64_ENCODE_INL_
 
 namespace be::util {
 namespace detail {

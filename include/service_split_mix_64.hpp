@@ -1,26 +1,27 @@
 #pragma once
-#ifndef BE_UTIL_SERVICE_SPLIT_MIX_64_HPP_
-#define BE_UTIL_SERVICE_SPLIT_MIX_64_HPP_
+#ifndef BE_UTIL_PRNG_SERVICE_SPLIT_MIX_64_HPP_
+#define BE_UTIL_PRNG_SERVICE_SPLIT_MIX_64_HPP_
 
-#include <be/core/service.hpp>
+#include "util_prng_autolink.hpp"
 #include "split_mix_64.hpp"
+#include <be/core/service.hpp>
 
 namespace be {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct SuppressUndefinedService<rnd::sm64> : True { };
+struct SuppressUndefinedService<util::sm64> : True { };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceTraits<rnd::sm64> : ServiceTraits<> {
+struct ServiceTraits<util::sm64> : ServiceTraits<> {
    using thread_local_manager = yes;
    using lazy_ids = yes;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceName<rnd::sm64> {
+struct ServiceName<util::sm64> {
    const char* operator()() {
       return "SplitMix64";
    }
@@ -28,20 +29,20 @@ struct ServiceName<rnd::sm64> {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceInitDependencies<rnd::sm64> {
+struct ServiceInitDependencies<util::sm64> {
    void operator()();
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceFactory<rnd::sm64> {
-   std::unique_ptr<rnd::sm64> operator()(Id);
+struct ServiceFactory<util::sm64> {
+   std::unique_ptr<util::sm64> operator()(Id);
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceCleanup<rnd::sm64> {
-   void operator()(std::unique_ptr<rnd::sm64>& service) {
+struct ServiceCleanup<util::sm64> {
+   void operator()(std::unique_ptr<util::sm64>& service) {
       service.reset();
    }
 };

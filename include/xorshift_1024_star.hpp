@@ -1,12 +1,11 @@
 #pragma once
-#ifndef BE_UTIL_XORSHIFT_1024_STAR_HPP_
-#define BE_UTIL_XORSHIFT_1024_STAR_HPP_
+#ifndef BE_UTIL_PRNG_XORSHIFT_1024_STAR_HPP_
+#define BE_UTIL_PRNG_XORSHIFT_1024_STAR_HPP_
 
 #include "split_mix_64.hpp"
 #include <cassert>
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 class Xorshift1024StarState {
@@ -277,13 +276,8 @@ std::basic_istream<E, T>& operator>>(std::basic_istream<E, T>& is, Xorshift1024S
    return is;
 }
 
+using xs1024s = Xorshift1024Star<>;
+
 } // be::util
-
-namespace rnd {
-
-using xs1024s = util::Xorshift1024Star<>;
-
-} // be::rnd
-} // be
 
 #endif

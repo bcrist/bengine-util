@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BE_UTIL_PARSE_NUMERIC_STRING_HPP_
-#define BE_UTIL_PARSE_NUMERIC_STRING_HPP_
+#ifndef BE_UTIL_STRING_PARSE_NUMERIC_STRING_HPP_
+#define BE_UTIL_STRING_PARSE_NUMERIC_STRING_HPP_
 
 #include "string_span.hpp"
 #include "parse_string_error.hpp"

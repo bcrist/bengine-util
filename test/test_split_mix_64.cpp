@@ -19,7 +19,7 @@ TEST_CASE("util::SplitMix64 parameters & basic usage", BE_CATCH_TAGS) {
    REQUIRE(SplitMix64<>::min() == std::numeric_limits<U64>::min());
    REQUIRE(SplitMix64<>::max() == std::numeric_limits<U64>::max());
 
-   rnd::sm64 prng;
+   util::sm64 prng;
    REQUIRE(prng.state() == 0xFFFFFFFFFFFFFFFFULL);
    REQUIRE(prng() == 0xe4d971771b652c20ULL);
    REQUIRE(prng() == 0xe99ff867dbf682c9ULL);

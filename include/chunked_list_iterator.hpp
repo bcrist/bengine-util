@@ -4,8 +4,7 @@
 
 #include "chunked_list_const_iterator.hpp"
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 template<typename C>
@@ -49,7 +48,6 @@ ChunkedListIterator<C> operator+(typename ChunkedListIterator<C>::difference_typ
 
 } // be::detail
 } // be::util
-} // be
 
 #include "chunked_list_iterator.inl"
 

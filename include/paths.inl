@@ -1,10 +1,9 @@
-#if !defined(BE_UTIL_PATHS_HPP_) && !defined(DOXYGEN)
+#if !defined(BE_UTIL_FS_PATHS_HPP_) && !defined(DOXYGEN)
 #include "paths.hpp"
-#elif !defined(BE_UTIL_PATHS_INL_)
-#define BE_UTIL_PATHS_INL_
+#elif !defined(BE_UTIL_FS_PATHS_INL_)
+#define BE_UTIL_FS_PATHS_INL_
 
-namespace be {
-namespace util {
+namespace be::util {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <typename I>
@@ -39,6 +38,5 @@ Path find_file(const Path& filename, const C& search_paths) {
 }
 
 } // be::util
-} // be
 
 #endif

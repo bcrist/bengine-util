@@ -3,8 +3,7 @@
 #elif !defined(BE_CORE_CHUNKED_LIST_ITERATOR_INL_)
 #define BE_CORE_CHUNKED_LIST_ITERATOR_INL_
 
-namespace be {
-namespace util {
+namespace be::util {
 namespace detail {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -124,6 +123,5 @@ ChunkedListIterator<C> operator+(typename ChunkedListIterator<C>::difference_typ
 
 } // be::detail
 } // be::util
-} // be
 
 #endif

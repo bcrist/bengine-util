@@ -1,8 +1,8 @@
 #pragma once
-#ifndef BE_UTIL_PARSE_STRING_ERROR_HPP_
-#define BE_UTIL_PARSE_STRING_ERROR_HPP_
+#ifndef BE_UTIL_STRING_PARSE_STRING_ERROR_HPP_
+#define BE_UTIL_STRING_PARSE_STRING_ERROR_HPP_
 
-#include "util_autolink.hpp"
+#include "util_string_autolink.hpp"
 #include <be/core/enum_traits.hpp>
 #include <be/core/exceptions.hpp>
 
@@ -64,16 +64,16 @@ namespace be::util {
 ///////////////////////////////////////////////////////////////////////////////
 template <typename T>
 T ignore_error(std::pair<T, ParseStringError> result) {
-   return result.first;
+   return std::move(result.first);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 template <typename T>
 T default_on_error(std::pair<T, ParseStringError> result, T default_value) {
    if (result.second == ParseStringError::none) {
-      return result.first;
+      return std::move(result.first);
    } else {
-      return default_value;
+      return std::move(default_value);
    }
 }
 
@@ -82,7 +82,7 @@ template <typename T>
 T throw_on_error(std::pair<T, ParseStringError> result) {
    switch (result.second) {
       case ParseStringError::none:
-         return result.first;
+         return std::move(result.first);
 
       case ParseStringError::empty_input:
          throw Recoverable<>("No value provided!");

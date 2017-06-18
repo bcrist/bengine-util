@@ -1,13 +1,13 @@
 #pragma once
-#ifndef BE_UTIL_PATH_GLOB_HPP_
-#define BE_UTIL_PATH_GLOB_HPP_
+#ifndef BE_UTIL_FS_PATH_GLOB_HPP_
+#define BE_UTIL_FS_PATH_GLOB_HPP_
 
+#include "util_fs_autolink.hpp"
 #include "paths.hpp"
 #include <be/core/logging.hpp>
 #include <regex>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 enum class PathMatchType : U8 {
    none = 0,
@@ -53,7 +53,6 @@ std::vector<Path> greb(const S& pattern, const Path& search_path, PathMatchType 
 std::vector<Path> greb(const S& pattern, PathMatchType match_type = PathMatchType::all);
 
 } // be::util
-} // be
 
 #include "path_glob.inl"
 

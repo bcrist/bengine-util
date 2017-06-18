@@ -1,26 +1,27 @@
 #pragma once
-#ifndef BE_UTIL_SERVICE_XORSHIFT_128_PLUS_HPP_
-#define BE_UTIL_SERVICE_XORSHIFT_128_PLUS_HPP_
+#ifndef BE_UTIL_PRNG_SERVICE_XORSHIFT_128_PLUS_HPP_
+#define BE_UTIL_PRNG_SERVICE_XORSHIFT_128_PLUS_HPP_
 
-#include <be/core/service.hpp>
+#include "util_prng_autolink.hpp"
 #include "xorshift_128_plus.hpp"
+#include <be/core/service.hpp>
 
 namespace be {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct SuppressUndefinedService<rnd::xs128p> : True { };
+struct SuppressUndefinedService<util::xs128p> : True { };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceTraits<rnd::xs128p> : ServiceTraits<> {
+struct ServiceTraits<util::xs128p> : ServiceTraits<> {
    using thread_local_manager = yes;
    using lazy_ids = yes;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceName<rnd::xs128p> {
+struct ServiceName<util::xs128p> {
    const char* operator()() {
       return "xorshift128+";
    }
@@ -28,20 +29,20 @@ struct ServiceName<rnd::xs128p> {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceInitDependencies<rnd::xs128p> {
+struct ServiceInitDependencies<util::xs128p> {
    void operator()();
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceFactory<rnd::xs128p> {
-   std::unique_ptr<rnd::xs128p> operator()(Id);
+struct ServiceFactory<util::xs128p> {
+   std::unique_ptr<util::xs128p> operator()(Id);
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 template <>
-struct ServiceCleanup<rnd::xs128p> {
-   void operator()(std::unique_ptr<rnd::xs128p>& service) {
+struct ServiceCleanup<util::xs128p> {
+   void operator()(std::unique_ptr<util::xs128p>& service) {
       service.reset();
    }
 };

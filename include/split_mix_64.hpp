@@ -1,15 +1,13 @@
 #pragma once
-#ifndef BE_UTIL_SPLIT_MIX_64_HPP_
-#define BE_UTIL_SPLIT_MIX_64_HPP_
+#ifndef BE_UTIL_PRNG_SPLIT_MIX_64_HPP_
+#define BE_UTIL_PRNG_SPLIT_MIX_64_HPP_
 
-#include "util_autolink.hpp"
 #include <be/core/t_is_seed_seq.hpp>
 #include <be/core/t_is_same_size.hpp>
 #include <limits>
 #include <iostream>
 
-namespace be {
-namespace util {
+namespace be::util {
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief  An implementation of the SplitMix64 PRNG which satisfies the
@@ -147,13 +145,8 @@ std::basic_istream<E, T>& operator>>(std::basic_istream<E, T>& is, SplitMix64<S>
    return is;
 }
 
+using sm64 = SplitMix64<>;
+
 } // be::util
-
-namespace rnd {
-
-using sm64 = util::SplitMix64<>;
-
-} // be::rnd
-} // be
 
 #endif
