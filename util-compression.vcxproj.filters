@@ -23,12 +23,18 @@
     <ClInclude Include="include\util_compression_autolink.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\zlib_result_code.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src-compression\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src-compression\zlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-compression\zlib_result_code.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

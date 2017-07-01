@@ -56,6 +56,7 @@
   <ItemGroup>
     <ClInclude Include="include\util_compression_autolink.hpp" />
     <ClInclude Include="include\zlib.hpp" />
+    <ClInclude Include="include\zlib_result_code.hpp" />
     <ClInclude Include="src-compression\pch.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +64,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src-compression\zlib.cpp" />
+    <ClCompile Include="src-compression\zlib_result_code.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

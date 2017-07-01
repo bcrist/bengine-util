@@ -7,6 +7,8 @@
 #include <be/core/be.hpp>
 #include <be/core/filesystem.hpp>
 
+// TODO split into individual files
+
 namespace be::util {
 
 enum class SpecialPath : U8 {

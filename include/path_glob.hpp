@@ -7,6 +7,8 @@
 #include <be/core/logging.hpp>
 #include <regex>
 
+// TODO replace with directory walker visitors
+
 namespace be::util {
 
 enum class PathMatchType : U8 {

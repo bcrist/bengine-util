@@ -3,7 +3,7 @@
 #define BE_UTIL_STRING_KEYWORD_PARSER_HPP_
 
 #include "string_span.hpp"
-#include "parse_string_error.hpp"
+#include "parse_string_error_condition.hpp"
 #include <be/core/logging.hpp>
 #include <be/core/stack_trace.hpp>
 #include <algorithm>
@@ -123,12 +123,23 @@ public:
    }
 
    template <typename T>
-   std::pair<E, ParseStringError> parse(const T& input) const {
+   E parse(const T& input) const {
       auto iter = mappings_.find(transform_(input));
       if (iter != mappings_.end()) {
-         return std::make_pair(iter->second, ParseStringError::none);
+         return iter->second;
       } else {
-         return std::make_pair(default_value_, ParseStringError::syntax_error);
+         return default_value_;
+      }
+   }
+
+   template <typename T>
+   E parse(const T& input, std::error_code& ec) const {
+      auto iter = mappings_.find(transform_(input));
+      if (iter != mappings_.end()) {
+         return iter->second;
+      } else {
+         ec = make_error_code(ParseStringErrorCondition::syntax_error);
+         return default_value_;
       }
    }
 

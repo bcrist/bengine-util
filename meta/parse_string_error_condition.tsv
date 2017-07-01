@@ -1,0 +1,4 @@
+name	value	msg
+empty_input	1	No value provided
+syntax_error		Syntax error
+out_of_range		Value is outside the allowed range

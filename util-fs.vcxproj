@@ -55,18 +55,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\check_file_signature.hpp" />
-    <ClInclude Include="include\files.hpp" />
-    <ClInclude Include="include\file_read_error.hpp" />
-    <ClInclude Include="include\file_write_error.hpp" />
+    <ClInclude Include="include\put_file_contents.hpp" />
+    <ClInclude Include="include\get_file_contents.hpp" />
     <ClInclude Include="include\paths.hpp" />
     <ClInclude Include="include\path_glob.hpp" />
     <ClInclude Include="include\util_fs_autolink.hpp" />
     <ClInclude Include="src-fs\pch.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src-fs\files.cpp" />
-    <ClCompile Include="src-fs\file_read_error.cpp" />
-    <ClCompile Include="src-fs\file_write_error.cpp" />
+    <ClCompile Include="src-fs\put_file_contents.cpp" />
+    <ClCompile Include="src-fs\get_file_contents.cpp" />
     <ClCompile Include="src-fs\native\vc_win\paths.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -79,8 +77,6 @@
   <ItemGroup>
     <None Include="include\paths.inl" />
     <None Include="include\path_glob.inl" />
-    <None Include="meta\file_read_error.lua" />
-    <None Include="meta\file_write_error.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

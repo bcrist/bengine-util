@@ -10,16 +10,17 @@ namespace detail {
 template <typename T,
    bool Float = std::is_floating_point<T>::value,
    bool Unsigned = std::is_unsigned<T>::value>
-   struct ParseNumericString;
+struct ParseNumericString;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Floating point
 template <typename T>
 struct ParseNumericString<T, true, false> {
-   std::pair<T, ParseStringError> operator()(gsl::cstring_span<> value, T min = std::numeric_limits<T>::lowest(), T max = std::numeric_limits<T>::max()) {
+   T operator()(gsl::cstring_span<> value, std::error_code& ec, T min = std::numeric_limits<T>::lowest(), T max = std::numeric_limits<T>::max()) {
       auto str = trim(value);
       if (str.empty()) {
-         return std::make_pair(T(), ParseStringError::empty_input);
+         ec = make_error_code(ParseStringErrorCondition::empty_input);
+         return T();
       }
 
       const char* begin = str.data();
@@ -28,7 +29,8 @@ struct ParseNumericString<T, true, false> {
       F64 val = strtod(begin, &iter);
 
       if (iter == begin) {
-         return std::make_pair(T(), ParseStringError::syntax_error);
+         ec = make_error_code(ParseStringErrorCondition::syntax_error);
+         return T(val);
       }
 
       while (iter < end && is_whitespace(*iter)) {
@@ -49,7 +51,8 @@ struct ParseNumericString<T, true, false> {
             F64 denom = strtod(iter, &iter2);
 
             if (iter2 == iter) {
-               return std::make_pair(T(), ParseStringError::syntax_error);
+               ec = make_error_code(ParseStringErrorCondition::syntax_error);
+               return T(val);
             }
 
             val /= denom;
@@ -62,14 +65,15 @@ struct ParseNumericString<T, true, false> {
       }
 
       if (iter != end) {
-         return std::make_pair(T(), ParseStringError::syntax_error);
+         ec = make_error_code(ParseStringErrorCondition::syntax_error);
+         return T(val);
       }
 
       if (val > (F64)max || val < (F64)min) {
-         return std::make_pair(T(), ParseStringError::out_of_range);
+         ec = make_error_code(ParseStringErrorCondition::out_of_range);
       }
 
-      return std::make_pair(static_cast<T>(val), ParseStringError::none);
+      return T(val);
    }
 };
 
@@ -77,10 +81,11 @@ struct ParseNumericString<T, true, false> {
 // Signed integers
 template <typename T>
 struct ParseNumericString<T, false, false> {
-   std::pair<T, ParseStringError> operator()(gsl::cstring_span<> value, T min = std::numeric_limits<T>::lowest(), T max = std::numeric_limits<T>::max(), I32 radix = 0) {
+   T operator()(gsl::cstring_span<> value, std::error_code& ec, T min = std::numeric_limits<T>::lowest(), T max = std::numeric_limits<T>::max(), I32 radix = 0) {
       auto str = trim(value);
       if (str.empty()) {
-         return std::make_pair(T(), ParseStringError::empty_input);
+         ec = make_error_code(ParseStringErrorCondition::empty_input);
+         return T();
       }
 
       const char* begin = str.data();
@@ -89,14 +94,15 @@ struct ParseNumericString<T, false, false> {
       I64 val = strtoll(begin, &iter, radix);
 
       if (iter != end) {
-         return std::make_pair(T(), ParseStringError::syntax_error);
+         ec = make_error_code(ParseStringErrorCondition::syntax_error);
+         return T(val);
       }
 
       if (val > (I64)max || val < (I64)min) {
-         return std::make_pair(T(), ParseStringError::out_of_range);
+         ec = make_error_code(ParseStringErrorCondition::out_of_range);
       }
 
-      return std::make_pair(static_cast<T>(val), ParseStringError::none);
+      return T(val);
    }
 };
 
@@ -104,10 +110,11 @@ struct ParseNumericString<T, false, false> {
 // Unsigned integers
 template <typename T>
 struct ParseNumericString<T, false, true> {
-   std::pair<T, ParseStringError> operator()(gsl::cstring_span<> value, T min = std::numeric_limits<T>::lowest(), T max = std::numeric_limits<T>::max(), I32 radix = 0) {
+   T operator()(gsl::cstring_span<> value, std::error_code& ec, T min = std::numeric_limits<T>::lowest(), T max = std::numeric_limits<T>::max(), I32 radix = 0) {
       auto str = trim(value);
       if (str.empty()) {
-         return std::make_pair(T(), ParseStringError::empty_input);
+         ec = make_error_code(ParseStringErrorCondition::empty_input);
+         return T();
       }
 
       const char* begin = str.data();
@@ -122,14 +129,15 @@ struct ParseNumericString<T, false, true> {
       U64 val = strtoull(begin, &iter, radix);
 
       if (iter != end) {
-         return std::make_pair(T(), ParseStringError::syntax_error);
+         ec = make_error_code(ParseStringErrorCondition::syntax_error);
+         return T(val);
       }
 
       if (val > (U64)max || val < (U64)min) {
-         return std::make_pair(T(), ParseStringError::out_of_range);
+         ec = make_error_code(ParseStringErrorCondition::out_of_range);
       }
 
-      return std::make_pair(static_cast<T>(val), ParseStringError::none);
+      return T(val);
    }
 };
 
@@ -137,31 +145,100 @@ struct ParseNumericString<T, false, true> {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <typename T>
-std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, std::pair<T, ParseStringError>>
+std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, T>
 parse_numeric_string(gsl::cstring_span<> value) {
+   T result;
    detail::ParseNumericString<T> func;
-   return func(value);
+   std::error_code ec;
+   result = func(value, ec);
+   if (ec) {
+      throw RecoverableTrace(ec);
+   }
+   return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////
 template <typename T>
-std::enable_if_t<std::is_integral<T>::value, std::pair<T, ParseStringError>>
+std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, T>
+parse_numeric_string(gsl::cstring_span<> value, std::error_code& ec) noexcept {
+   detail::ParseNumericString<T> func;
+   return func(value, ec);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+template <typename T>
+std::enable_if_t<std::is_integral<T>::value, T>
 parse_numeric_string(gsl::cstring_span<> value, I32 radix) {
+   T result;
    detail::ParseNumericString<T> func;
-   return func(value, std::numeric_limits<T>::lowest(), std::numeric_limits<T>::max(), radix);
+   std::error_code ec;
+   result = func(value, ec, std::numeric_limits<T>::lowest(), std::numeric_limits<T>::max(), radix);
+   if (ec) {
+      throw RecoverableTrace(ec);
+   }
+   return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////
 template <typename T>
-std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, std::pair<T, ParseStringError>>
+std::enable_if_t<std::is_integral<T>::value, T>
+parse_numeric_string(gsl::cstring_span<> value, I32 radix, std::error_code& ec) noexcept {
+   detail::ParseNumericString<T> func;
+   return func(value, ec, std::numeric_limits<T>::lowest(), std::numeric_limits<T>::max(), radix);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+template <typename T>
+std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, T>
 parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max) {
+   T result;
    detail::ParseNumericString<T> func;
-   return func(value, min, max);
+   std::error_code ec;
+   result = func(value, ec, min, max);
+   if (ec) {
+      if (ec == ParseStringErrorCondition::out_of_range) {
+         using std::to_string;
+         throw RecoverableTrace(ec, "Value must be in the range [ " + to_string(min) + ", " + to_string(max) + " ]");
+      } else {
+         throw RecoverableTrace(ec);
+      }
+   }
+   return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////
 template <typename T>
-std::enable_if_t<std::is_integral<T>::value, std::pair<T, ParseStringError>>
-parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max, I32 radix) {
+std::enable_if_t<std::is_integral<T>::value || std::is_floating_point<T>::value, T>
+parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max, std::error_code& ec) noexcept {
    detail::ParseNumericString<T> func;
-   return func(value, min, max, radix);
+   return func(value, ec, min, max);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+template <typename T>
+std::enable_if_t<std::is_integral<T>::value, T>
+parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max, I32 radix) {
+   T result;
+   detail::ParseNumericString<T> func;
+   std::error_code ec;
+   result = func(value, ec, min, max, radix);
+   if (ec) {
+      if (ec == ParseStringErrorCondition::out_of_range) {
+         using std::to_string;
+         throw RecoverableTrace(ec, "Value must be in the range [ " + to_string(min) + ", " + to_string(max) + " ]");
+      } else {
+         throw RecoverableTrace(ec);
+      }
+   }
+   return result;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+template <typename T>
+std::enable_if_t<std::is_integral<T>::value, T>
+parse_bounded_numeric_string(gsl::cstring_span<> value, T min, T max, I32 radix, std::error_code& ec) noexcept {
+   detail::ParseNumericString<T> func;
+   return func(value, ec, min, max, radix);
 }
 
 } // be::util

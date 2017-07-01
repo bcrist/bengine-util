@@ -35,9 +35,6 @@
     <ClInclude Include="include\parse_numeric_string.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\parse_string_error.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\pointer_to_string.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -65,15 +62,15 @@
     <ClInclude Include="include\util_string_autolink.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\parse_string_error_condition.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src-string\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src-string\binary_units.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src-string\parse_string_error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src-string\pointer_to_string.cpp">
@@ -88,13 +85,13 @@
     <ClCompile Include="src-string\native\vc_win\utf16_widen_narrow.cpp">
       <Filter>Source Files\native\vc_win</Filter>
     </ClCompile>
+    <ClCompile Include="src-string\parse_string_error_condition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\parse_numeric_string.inl">
       <Filter>Header Files</Filter>
-    </None>
-    <None Include="meta\parse_string_error.lua">
-      <Filter>Meta-Source Files</Filter>
     </None>
     <None Include="include\base64_decode.inl">
       <Filter>Header Files\base64</Filter>
@@ -104,6 +101,9 @@
     </None>
     <None Include="include\interpolate_string.inl">
       <Filter>Header Files</Filter>
+    </None>
+    <None Include="meta\parse_string_error_condition.lua">
+      <Filter>Meta-Source Files</Filter>
     </None>
   </ItemGroup>
 </Project>

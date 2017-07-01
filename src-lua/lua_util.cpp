@@ -493,7 +493,7 @@ int util_deflate(lua_State* L) {
    }
 
    Buf<const UC> data = make_buf(ptr, len);
-   Buf<const char> compressed(util::deflate_blob(data, false, level));
+   Buf<const char> compressed(util::deflate_buf(data, false, level));
    lua_pushlstring(L, compressed.get(), compressed.size());
    return 1;
 }
@@ -504,7 +504,7 @@ int util_inflate(lua_State* L) {
    const char* ptr = luaL_checklstring(L, 1, &len);
    std::size_t uncompressed_length = luaL_checkinteger(L, 2);
    Buf<const UC> data = make_buf(ptr, len);
-   Buf<const char> uncompressed(util::inflate_blob(data, uncompressed_length));
+   Buf<const char> uncompressed(util::inflate_buf(data, uncompressed_length));
    lua_pushlstring(L, uncompressed.get(), uncompressed.size());
    return 1;
 }

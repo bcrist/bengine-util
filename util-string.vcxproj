@@ -59,7 +59,7 @@
     <ClInclude Include="include\binary_units.hpp" />
     <ClInclude Include="include\keyword_parser.hpp" />
     <ClInclude Include="include\parse_numeric_string.hpp" />
-    <ClInclude Include="include\parse_string_error.hpp" />
+    <ClInclude Include="include\parse_string_error_condition.hpp" />
     <ClInclude Include="include\pointer_to_string.hpp" />
     <ClInclude Include="include\interpolate_string.hpp" />
     <ClInclude Include="include\string_span.hpp" />
@@ -74,7 +74,7 @@
     <ClCompile Include="src-string\native\vc_win\utf16_widen_narrow.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src-string\parse_string_error.cpp" />
+    <ClCompile Include="src-string\parse_string_error_condition.cpp" />
     <ClCompile Include="src-string\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -87,7 +87,7 @@
     <None Include="include\base64_encode.inl" />
     <None Include="include\parse_numeric_string.inl" />
     <None Include="include\interpolate_string.inl" />
-    <None Include="meta\parse_string_error.lua" />
+    <None Include="meta\parse_string_error_condition.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

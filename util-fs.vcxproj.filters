@@ -23,16 +23,7 @@
     <ClInclude Include="src-fs\pch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\file_read_error.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\file_write_error.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\check_file_signature.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\files.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\path_glob.hpp">
@@ -44,18 +35,15 @@
     <ClInclude Include="include\util_fs_autolink.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\get_file_contents.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\put_file_contents.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src-fs\pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src-fs\file_read_error.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src-fs\file_write_error.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src-fs\files.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src-fs\path_glob.cpp">
@@ -67,14 +55,14 @@
     <ClCompile Include="src-fs\native\vc_win\paths.cpp">
       <Filter>Source Files\native\vc_win</Filter>
     </ClCompile>
+    <ClCompile Include="src-fs\get_file_contents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src-fs\put_file_contents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="meta\file_read_error.lua">
-      <Filter>Meta-Source Files</Filter>
-    </None>
-    <None Include="meta\file_write_error.lua">
-      <Filter>Meta-Source Files</Filter>
-    </None>
     <None Include="include\path_glob.inl">
       <Filter>Header Files</Filter>
     </None>

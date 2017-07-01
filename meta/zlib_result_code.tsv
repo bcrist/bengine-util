@@ -1,0 +1,10 @@
+name	errc	value	msg
+ok		Z_OK	Operation suceeded
+stream_end		Z_STREAM_END	End of input reached
+need_dictionary		Z_NEED_DICT	Stream inflation requires dictionary
+io_error	io_error	Z_ERRNO	An error occurred in a platform I/O library function
+stream_error	invalid_argument	Z_STREAM_ERROR	Invalid argument or stream state
+data_error	illegal_byte_sequence	Z_DATA_ERROR	Input is corrupted or not compressed
+not_enough_memory	not_enough_memory	Z_MEM_ERROR	Failed to allocate memory
+buffer_error	no_message_available	Z_BUF_ERROR	No data available in buffer
+version_mismatch		Z_VERSION_ERROR	Linked zlib binary version doesn't match header

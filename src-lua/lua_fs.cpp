@@ -2,7 +2,8 @@
 #include <be/core/filesystem.hpp>
 #include <be/util/paths.hpp>
 #include <be/util/path_glob.hpp>
-#include <be/util/files.hpp>
+#include <be/util/get_file_contents.hpp>
+#include <be/util/put_file_contents.hpp>
 
 namespace be::belua {
 
@@ -318,15 +319,8 @@ int fs_glob(lua_State* L) {
 ///////////////////////////////////////////////////////////////////////////////
 int fs_get_file_contents(lua_State* L) {
    Path filename(luaL_checkstring(L, 1));
-
-   auto result = util::get_file_contents_string(filename);
-
-   if (result.second != util::FileReadError::none) {
-      luaL_error(L, util::file_read_error_name(result.second));
-   } else {
-      lua_pushlstring(L, result.first.c_str(), result.first.length());
-   }
-   
+   S result = util::get_file_contents_string(filename);
+   lua_pushlstring(L, result.c_str(), result.length());
    return 1;
 }
 
@@ -335,7 +329,6 @@ int fs_put_file_contents(lua_State* L) {
    Path filename(luaL_checkstring(L, 1));
    std::size_t len;
    const char* input = luaL_tolstring(L, 2, &len);
-
    util::put_file_contents(filename, S(input, len));
    return 0;
 }
