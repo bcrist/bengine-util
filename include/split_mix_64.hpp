@@ -3,7 +3,7 @@
 #define BE_UTIL_PRNG_SPLIT_MIX_64_HPP_
 
 #include <be/core/t_is_seed_seq.hpp>
-#include <be/core/t_is_same_size.hpp>
+#include <be/core/t_size.hpp>
 #include <limits>
 #include <iostream>
 
