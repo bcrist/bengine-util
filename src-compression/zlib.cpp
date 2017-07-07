@@ -19,6 +19,16 @@ std::size_t deflate_bound(std::size_t uncompressed_size, bool encode_length) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+void* zlib_alloc(void*, uInt items, uInt size) {
+   return std::malloc(std::size_t(items) * std::size_t(size));
+}
+
+///////////////////////////////////////////////////////////////////////////////
+void zlib_free(void*, void* ptr) {
+   std::free(ptr);
+}
+
+///////////////////////////////////////////////////////////////////////////////
 Buf<UC> deflate(const UC* uncompressed, std::size_t uncompressed_size, bool encode_length, I8 level, std::error_code& ec) noexcept {
    Buf<UC> buffer;
    try {
@@ -40,8 +50,8 @@ Buf<UC> deflate(const UC* uncompressed, std::size_t uncompressed_size, bool enco
    }
 
    ::z_stream stream;
-   stream.zalloc = (::alloc_func)0;
-   stream.zfree = (::free_func)0;
+   stream.zalloc = zlib_alloc;
+   stream.zfree = zlib_free;
    stream.opaque = (::voidpf)0;
 
    int result = deflateInit(&stream, level);
@@ -132,8 +142,8 @@ std::size_t inflate(const UC* compressed, std::size_t compressed_size, UC* uncom
    }
 
    z_stream stream;
-   stream.zalloc = (alloc_func)0;
-   stream.zfree = (free_func)0;
+   stream.zalloc = zlib_alloc;
+   stream.zfree = zlib_free;
    stream.opaque = (voidpf)0;
    stream.next_in = (const Bytef*)in;
    stream.avail_in = 0;

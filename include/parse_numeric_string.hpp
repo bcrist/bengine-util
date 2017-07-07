@@ -3,6 +3,7 @@
 #define BE_UTIL_STRING_PARSE_NUMERIC_STRING_HPP_
 
 #include "string_span.hpp"
+#include "parse_string_error_condition.hpp"
 #include <be/core/alg.hpp>
 
 namespace be::util {
