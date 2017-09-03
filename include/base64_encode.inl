@@ -90,7 +90,7 @@ S base64_encode(const Buf<const UC>& data) {
          detail::Base64Padding<P>::encode(2, str);
       }
    }
-   
+
    return str;
 }
 

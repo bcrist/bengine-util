@@ -32,7 +32,7 @@ TEST_CASE("util::Utf8Iterator - basic functionality", BE_CATCH_TAGS) {
    REQUIRE(it != s.cend());
 
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
-   
+
    util::Utf8Iterator it2(it);
    REQUIRE(it2 == s.begin());
 
@@ -47,7 +47,7 @@ TEST_CASE("util::Utf8Iterator - basic functionality", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - valid UTF-8 input", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    s = "\x4D"; // U+004D
    it = s.begin();
 
@@ -139,7 +139,7 @@ TEST_CASE("util::Utf8Iterator - valid UTF-8 input", BE_CATCH_TAGS) {
    REQUIRE(*(it++) == 0x266B);
    REQUIRE(*(it++) == '_');
    REQUIRE(*(it++) == 0x10ABCD);
-   
+
    REQUIRE(it == s.end());
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
 
@@ -160,10 +160,10 @@ TEST_CASE("util::Utf8Iterator - valid UTF-8 input", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - extra continuation bytes", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    // ' ' at beginning prevents buffer underrun
    //       0x80   0x80   _   U+2030         0x80   U+266B         U+266B         0x80   0x81   0x82   0x80   0x8A
-   s = " " "\x80" "\x80" "_" "\xE2\x80\xB0" "\x80" "\xE2\x99\xAB" "\xE2\x99\xAB" "\x80" "\x81" "\x82" "\x80" "\x8A";   
+   s = " " "\x80" "\x80" "_" "\xE2\x80\xB0" "\x80" "\xE2\x99\xAB" "\xE2\x99\xAB" "\x80" "\x81" "\x82" "\x80" "\x8A";
    s.c_str(); // ensure string is null terminated.
    it = s.begin() + 1;  // skip initial space padding character
 
@@ -258,7 +258,7 @@ TEST_CASE("util::Utf8Iterator - missing continuation bytes", BE_CATCH_TAGS) {
    REQUIRE(it.reset_error() == util::Utf8Iterator::error_type::missing_continuation_byte);
    REQUIRE(*(it++) == 0xFFFD);
    REQUIRE(it.reset_error() == util::Utf8Iterator::error_type::missing_continuation_byte);
-   
+
    REQUIRE(it == s.end());
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
 
@@ -271,7 +271,7 @@ TEST_CASE("util::Utf8Iterator - missing continuation bytes", BE_CATCH_TAGS) {
 
    REQUIRE(*(--it) == '_');
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
-   
+
    REQUIRE(*(--it) == 0xFFFD);
    REQUIRE(it.reset_error() == util::Utf8Iterator::error_type::missing_continuation_byte);
    REQUIRE(*(--it) == 0xFFFD);
@@ -290,10 +290,10 @@ TEST_CASE("util::Utf8Iterator - missing continuation bytes", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - invalid bytes", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    // ' ' at beginning prevents buffer underrun
    //       0xF8   _   U+2030         0xF9   U+266B         0xFA   0xFB   0xFC   0xFD   0xFE   0xFF
-   s = " " "\xF8" "_" "\xE2\x80\xB0" "\xF9" "\xE2\x99\xAB" "\xFA" "\xFB" "\xFC" "\xFD" "\xFE" "\xFF";   
+   s = " " "\xF8" "_" "\xE2\x80\xB0" "\xF9" "\xE2\x99\xAB" "\xFA" "\xFB" "\xFC" "\xFD" "\xFE" "\xFF";
    s.c_str(); // ensure string is null terminated.
    it = s.begin() + 1;  // skip initial space padding character
 
@@ -338,7 +338,7 @@ TEST_CASE("util::Utf8Iterator - invalid bytes", BE_CATCH_TAGS) {
    REQUIRE(it.reset_error() == util::Utf8Iterator::error_type::invalid_byte);
    REQUIRE(*(--it) == 0xFFFD);
    REQUIRE(it.reset_error() == util::Utf8Iterator::error_type::invalid_byte);
-   
+
 
    REQUIRE(*(--it) == 0x266B);
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
@@ -359,7 +359,7 @@ TEST_CASE("util::Utf8Iterator - invalid bytes", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - overlong encodings", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    //   U+007F U+007F     U+007F         U+007F               U+07FF     U+07FF         U+07FF             U+FFFF         U+FFFF
    s = "\x7F" "\xC1\xBF" "\xE0\x81\xBF" "\xF0\x80\x81\xBF"   "\xDF\xBF" "\xE0\x9F\xBF" "\xF0\x80\x9F\xBF" "\xEF\xBF\xBF" "\xF0\x8F\xBF\xBF";
    it = s.begin();
@@ -391,7 +391,7 @@ TEST_CASE("util::Utf8Iterator - overlong encodings", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - surrogate pair codepoints", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    //   U+D800         U+0020 U+DFFF
    s = "\xED\xA0\x80" " "    "\xED\xBF\xBF";
    it = s.begin();
@@ -410,7 +410,7 @@ TEST_CASE("util::Utf8Iterator - surrogate pair codepoints", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - invalid codepoints", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    //   U+110000           U+0020 U+1FFFFF
    s = "\xF4\x90\x80\x80" " "    "\xF7\xBF\xBF\xBF";
    it = s.begin();
@@ -427,7 +427,7 @@ TEST_CASE("util::Utf8Iterator - invalid codepoints", BE_CATCH_TAGS) {
 TEST_CASE("util::Utf8Iterator - torture test", BE_CATCH_TAGS) {
    S s;
    util::Utf8Iterator it;
-   
+
    // ' ' at beginning prevents buffer underrun
    //       0x80   0xF4   .   U+DFFF             0x80   0xFF   0xF088     ABC   U+4E80         U+1FFFFF
    s = " " "\x80" "\xF4" "." "\xF0\x8D\xBF\xBF" "\x80" "\xFF" "\xF0\x88" "ABC" "\xE4\xBA\x80" "\xF7\xBF\xBF\xBF";

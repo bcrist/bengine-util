@@ -75,7 +75,7 @@ void cwd(const Path& path, bool create_path) {
    if (create_path) {
       fs::create_directories(path);
    }
-   
+
    Path p = fs::canonical(path);
    fs::current_path(p);
 }
@@ -110,7 +110,7 @@ Path special_path(SpecialPath type) {
 ///////////////////////////////////////////////////////////////////////////////
 Path random_path(const Path& model, const Path& symbols) {
    auto& prng = service<util::xo128p>();
-   
+
    auto native = model.native();
    auto natsym = symbols.native();
 
@@ -191,7 +191,7 @@ void parse_multi_path(const S& multi_path, std::vector<Path>& paths) {
    bool quoted = false;
    bool escaped = false;
    bool quote_esc = false;
-   
+
    for (char c : expanded_multi) {
       switch (c) {
          case ';':
@@ -222,7 +222,7 @@ void parse_multi_path(const S& multi_path, std::vector<Path>& paths) {
                quote_esc = false;
                quoted = true;
             }
-            
+
             quoted = !quoted;
 
             if (!quoted) {

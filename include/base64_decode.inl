@@ -110,7 +110,7 @@ Buf<UC> base64_decode_buf(gsl::cstring_span<> encoded_data) {
 
    Buf<UC> buf = make_buf<UC>((encoded_data.size() / 4) * 3 + 3);
    std::size_t size = detail::base64_decode<S62, S63, P>(encoded_data, buf.get());
-   
+
    buf.release();
    return Buf<UC>(buf.get(), size, be::detail::delete_array);
 }

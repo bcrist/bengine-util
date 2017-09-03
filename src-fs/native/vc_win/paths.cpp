@@ -10,7 +10,7 @@ namespace be::util {
 
 ///////////////////////////////////////////////////////////////////////////////
 Path default_special_path(SpecialPath type) {
-   
+
    if (type == SpecialPath::temp) {
       return fs::temp_directory_path();
    } else if (type == SpecialPath::install || type == SpecialPath::process_image) {

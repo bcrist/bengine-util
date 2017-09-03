@@ -36,7 +36,7 @@ uint64_t next(void) {
    s[0] = s0;
    s1 ^= s1 << 23; // a
    s[1] = s1 ^ s0 ^ (s1 >> 18) ^ (s0 >> 5); // b, c
-   return s[1] + s0; 
+   return s[1] + s0;
 }
 
 

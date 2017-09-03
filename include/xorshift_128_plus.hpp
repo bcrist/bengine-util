@@ -138,7 +138,7 @@ public:
       data[0] = s0;
       s1 ^= s1 << 23; // a
       data[1] = s1 ^ s0 ^ (s1 >> 18) ^ (s0 >> 5); // b, c
-      return data[1] + s0; 
+      return data[1] + s0;
    }
 
    void discard(unsigned long long num = 1) {

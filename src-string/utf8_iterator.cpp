@@ -212,7 +212,7 @@ Utf8Iterator Utf8Iterator::operator++(int) noexcept {
 ///
 /// \warning UTF-8 code unit sequences which do not begin with a valid
 ///         codepoint may cause operator-- to dereference past-the-beginning
-///         elements.  To avoid crashes, if malformed UTF-8 inputs are 
+///         elements.  To avoid crashes, if malformed UTF-8 inputs are
 ///         possible, ensure that the following expression evaluates to true:
 ///         (str[0] & 0xC0) != 0x80;
 ///         Otherwise, the string may be prepended with any ASCII character
@@ -297,7 +297,7 @@ Utf8Iterator Utf8Iterator::operator--(int) noexcept {
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief  If the iterator points to the middle of a codepoint sequence,
 ///         moves the iterator to the start of that codepoint.
-///         
+///
 /// \details The error state of the iterator will <i>not</i> be changed by
 ///         calling normalize().  If the iterator is in the middle of a
 ///         codepoint where operator* would result in an error, it will be
@@ -320,7 +320,7 @@ Utf8Iterator& Utf8Iterator::normalize() noexcept {
             if ((*it & (first_bit | second_bit)) != first_bit) {
                // it_[i] is not a continuation byte.
 
-               
+
                auto result = try_parse_(it);
 
                if (it > it_) {

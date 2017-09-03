@@ -48,13 +48,13 @@ public:
       if (cb_alloc) {
          cb_alloc(ptr, count, typeid(T));
       }
-      
+
       return ptr;
    }
 
    pointer allocate(size_type count, const void * oldptr) {
       return allocate(count);
-   }   
+   }
 };
 
 #ifndef SETUP_ALLOC_CBS
@@ -527,7 +527,7 @@ TEST_CASE("util::ChunkedList copy-assignment", BE_CATCH_TAGS) {
          REQUIRE(cl[i] == con[i]);
       }
    }
-   
+
    SECTION("copying to smaller container") {
       be::util::ChunkedList<int> con = { 1, 2, 3 };
 
@@ -651,7 +651,7 @@ TEST_CASE("util::ChunkedList initializer-list assignment", BE_CATCH_TAGS) {
 TEST_CASE("util::ChunkedList 'push back N copy constructed elements' assign", BE_CATCH_TAGS) {
    SECTION("assign(1, 7)") {
       be::util::ChunkedList<int> con;
-      
+
       con.assign(1, 7);
 
       REQUIRE(con.size() == 1);
@@ -674,7 +674,7 @@ TEST_CASE("util::ChunkedList 'push back N copy constructed elements' assign", BE
 
    SECTION("assign(2, 7)") {
       be::util::ChunkedList<int> con;
-      
+
       con.assign(2, 7);
       REQUIRE(con.size() == 2);
       REQUIRE(con.front() == 7);
@@ -683,7 +683,7 @@ TEST_CASE("util::ChunkedList 'push back N copy constructed elements' assign", BE
 
    SECTION("assign(50, 7)") {
       be::util::ChunkedList<int> con;
-      
+
       con.assign(50, 7);
       REQUIRE(con.size() == 50);
 
@@ -725,7 +725,7 @@ TEST_CASE("util::ChunkedList iterator copy assign", BE_CATCH_TAGS) {
 
    SECTION("assign(vec.begin(), vec.begin() + 2)") {
       be::util::ChunkedList<int> con;
-      
+
       con.assign(vec.begin(), vec.begin() + 2);
 
       REQUIRE(con.size() == 2);
@@ -734,7 +734,7 @@ TEST_CASE("util::ChunkedList iterator copy assign", BE_CATCH_TAGS) {
 
    SECTION("assign(vec.begin(), vec.begin())") {
       be::util::ChunkedList<int> con;
-      
+
       con.assign(vec.begin(), vec.begin());
 
       REQUIRE(con.size() == 0);
@@ -742,7 +742,7 @@ TEST_CASE("util::ChunkedList iterator copy assign", BE_CATCH_TAGS) {
 
    SECTION("assign(cl.begin(), cl.end())") {
       be::util::ChunkedList<int> con;
-      
+
       con.assign(cl.begin(), cl.end());
       REQUIRE(con.size() == 20);
       REQUIRE(con.front() == 47);
@@ -753,7 +753,7 @@ TEST_CASE("util::ChunkedList iterator copy assign", BE_CATCH_TAGS) {
       int a[2] = { 7, 47 };
 
       be::util::ChunkedList<int> con;
-      
+
       con.assign(a + 0, a + 1);
       REQUIRE(con.size() == 1);
       REQUIRE(con.front() == 7);
@@ -764,7 +764,7 @@ TEST_CASE("util::ChunkedList iterator copy assign", BE_CATCH_TAGS) {
       std::istringstream iss("1 2 3 4 5 6 7");
 
       be::util::ChunkedList<int> con;
-      
+
       con.assign(std::istream_iterator<int>(iss), std::istream_iterator<int>()); // these are input_iterators rather than forward_iterators (different codepath)
       REQUIRE(con.size() == 7);
       REQUIRE(con.front() == 1);
@@ -775,7 +775,7 @@ TEST_CASE("util::ChunkedList iterator copy assign", BE_CATCH_TAGS) {
 TEST_CASE("util::ChunkedList initializer-list assign", BE_CATCH_TAGS) {
    SECTION("util::ChunkedList<int> con = {}") {
       be::util::ChunkedList<int> con { 1, 2 };
-      
+
       con = { };
 
       REQUIRE(con.size() == 0);
@@ -783,7 +783,7 @@ TEST_CASE("util::ChunkedList initializer-list assign", BE_CATCH_TAGS) {
 
    SECTION("util::ChunkedList<int> con= { 1, 2, 3, 4 }") {
       be::util::ChunkedList<int> con;
-      
+
       con = { 1, 2, 3, 4 };
 
       REQUIRE(con.size() == 4);
@@ -795,7 +795,7 @@ TEST_CASE("util::ChunkedList initializer-list assign", BE_CATCH_TAGS) {
 
    SECTION("util::ChunkedList<int> con { 1, 2, 3, 4 }") {
       be::util::ChunkedList<int> con { 22, 2 };
-      
+
       con = { 1, 2, 3, 4 };
 
       REQUIRE(con.size() == 4);
@@ -1025,7 +1025,7 @@ TEST_CASE("util::ChunkedList insert()", BE_CATCH_TAGS) {
       con.push_back(std::unique_ptr<int>(new int(3)));
       con.push_back(std::unique_ptr<int>(new int(4)));
 
-      
+
       con.insert(con.begin() + 2, std::unique_ptr<int>(new int(5)));
       REQUIRE(*con[0] == 1);
       REQUIRE(*con[1] == 2);
@@ -1033,7 +1033,7 @@ TEST_CASE("util::ChunkedList insert()", BE_CATCH_TAGS) {
       REQUIRE(*con[3] == 3);
       REQUIRE(*con[4] == 4);
    }
-   
+
    SECTION("const_iterator pos, size_type count, const value_type& value") {
       be::util::ChunkedList<int> con { 1,2,3,4 };
 
@@ -1051,7 +1051,7 @@ TEST_CASE("util::ChunkedList insert()", BE_CATCH_TAGS) {
    SECTION("const_iterator pos, I first, I last") {
       be::util::ChunkedList<int> con { 1,2,3,4 };
       std::vector<int> v { 10, 11, 12, 13 };
-      
+
       con.insert(con.begin() + 2, v.begin(), v.end());
       REQUIRE(con[0] == 1);
       REQUIRE(con[1] == 2);

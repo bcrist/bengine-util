@@ -23,7 +23,7 @@ namespace vigna {
    a 64-bit seed, we suggest to seed a splitmix64 generator and use its
    output to fill s. */
 
-uint64_t s[16]; 
+uint64_t s[16];
 int p;
 
 uint64_t next(void) {
@@ -240,7 +240,7 @@ TEST_CASE("util::Xorshift1024Star jump()", BE_CATCH_TAGS) {
    Xorshift1024Star<> prng2(prng);
 
    util::xs1024s::state_type s1, s2;
-   
+
    memset(vigna::s, 0xFF, sizeof(vigna::s));
    vigna::p = 0;
    vigna::next();

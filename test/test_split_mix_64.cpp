@@ -59,7 +59,7 @@ TEST_CASE("util::SplitMix64 seed from generator", BE_CATCH_TAGS) {
       prng.seed(dgen);
       REQUIRE(prng.state() == 0x8b8bff008b8bff00ULL);
    }
-   
+
    SECTION("U64 generator") {
       DummyGen<U64> dgen([]() { return (U64)0x8b8bff0012344321ULL; });
       SplitMix64<> prng;
@@ -79,7 +79,7 @@ TEST_CASE("util::SplitMix64 copy construction & assignment", BE_CATCH_TAGS) {
       prng();
       REQUIRE(prng.state() == prng2.state());
    }
-   
+
    SECTION("Copy construction across different template default seeds") {
       SplitMix64<1337> prng2(prng);
       REQUIRE(prng2.state() == 64);
@@ -101,7 +101,7 @@ TEST_CASE("util::SplitMix64 copy construction & assignment", BE_CATCH_TAGS) {
 TEST_CASE("util::SplitMix64 discard", BE_CATCH_TAGS) {
    SplitMix64<> prng(18181818181ULL);
    SplitMix64<> prng2(prng);
-   
+
    REQUIRE(prng.state() == prng2.state());
 
    prng();
@@ -136,7 +136,7 @@ TEST_CASE("util::SplitMix64 stream insertion/extraction", BE_CATCH_TAGS) {
    SECTION("Insertion") {
       REQUIRE(ss.str() == "18181818181");
    }
-   
+
    SECTION("Extraction") {
       SplitMix64<> prng2;
       ss >> prng2;

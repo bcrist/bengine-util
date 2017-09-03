@@ -173,7 +173,7 @@ void ChunkedList<T, A, N, M, S>::assign(size_type count, const value_type& value
       clear();
       return;
    }
-      
+
    if (size_ > 0) {
       // value might be a reference to a value in this container, so
       // assign it to the first element, then copy that to the rest
@@ -584,7 +584,7 @@ void ChunkedList<T, A, N, M, S>::clear() noexcept {
    for (iterator i = begin(), e = end(); i != e; ++i) {
       (*i).~T();
    }
-   
+
    deallocate_nodes_(0);
    size_ = 0;
 }
@@ -729,11 +729,11 @@ ChunkedList<T, A, N, M, S>::get_node_(size_type node_index) {
       assert(this->get_static_metanode_().nodes[node_index]);
       return this->get_static_metanode_().nodes[node_index];
    }
-   
+
    node_index -= static_chunks;
    metanode* meta = this->get_static_metanode_().next;
    assert(meta);
-   
+
    while (node_index >= chunks_per_metanode) {
       assert(meta->next);
       meta = meta->next;
@@ -783,14 +783,14 @@ ChunkedList<T, A, N, M, S>::get_last_meta_(size_type& meta_index) {
       meta_index = static_chunks;
       return nullptr;
    }
-      
+
    size_type node_index = (size_ - 1) / chunk_size;
    if (node_index < static_chunks) {
       meta_index = node_index;
       return nullptr;
    }
 
-   node_index -= static_chunks;   
+   node_index -= static_chunks;
    metanode* meta = this->get_static_metanode_().next;
    assert(meta);
 
@@ -904,7 +904,7 @@ void ChunkedList<T, A, N, M, S>::deallocate_nodes_(size_type first_index) {
       // deallocate static nodes & set to null
       for (size_type i = first_index; i < static_chunks; ++i) {
          pointer& ptr = this->get_static_metanode_().nodes[i];
-         
+
          if (!ptr) {
             return; // static nodes not yet filled; assume get_static_metanode_().next is null already
          }
@@ -922,12 +922,12 @@ void ChunkedList<T, A, N, M, S>::deallocate_nodes_(size_type first_index) {
 
       metanode* meta = this->get_static_metanode_().next;
       metanode* prev = nullptr;
-      
+
       while (first_index >= chunks_per_metanode) {
          if (!meta) {
             return;
          }
-         
+
          prev = meta;
          meta = meta->next;
          first_index -= chunks_per_metanode;
@@ -936,7 +936,7 @@ void ChunkedList<T, A, N, M, S>::deallocate_nodes_(size_type first_index) {
       if (!meta) {
          return;
       }
-      
+
       if (first_index == 0) {
          delete_metanodes_(meta);
          prev->next = nullptr;
@@ -1045,7 +1045,7 @@ ChunkedList<T, A, N, M, S>::get_capacity_(metanode*& last_meta) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-/// \return A pointer to the 
+/// \return A pointer to the
 template <typename T, typename A, std::size_t N, std::size_t M, std::size_t S>
 typename ChunkedList<T, A, N, M, S>::size_type
 ChunkedList<T, A, N, M, S>::ensure_capacity_(size_type count) {
@@ -1130,7 +1130,7 @@ void ChunkedList<T, A, N, M, S>::push_back_n_(size_type count) {
          if (i == count) {
             break;
          }
-         
+
          if (index < chunk_size - 1) {
             ++index;
          } else {

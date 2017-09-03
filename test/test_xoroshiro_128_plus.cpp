@@ -21,7 +21,7 @@ namespace vigna {
    up to (and included) 16TB, with the exception of binary rank tests,
    which fail due to the lowest bit being an LFSR; all other bits pass all
    tests. We suggest to use a sign test to extract a random Boolean value.
-   
+
    Note that the generator uses a simulated rotate operation, which most C
    compilers will turn into a single instruction. In Java, you can use
    Long.rotateLeft(). In languages that do not make low-level rotation

@@ -19,7 +19,7 @@ public:
 
    constexpr operator C32() const noexcept;
    constexpr const char* c_str() const noexcept;
-   
+
    constexpr char operator[](std::size_t offset) const noexcept;
    constexpr std::size_t length() const noexcept;
    constexpr std::size_t size() const noexcept;

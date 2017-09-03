@@ -96,7 +96,7 @@ std::vector<Path> recurse_directories(I begin, I end) {
             | default_log();
       }
    }
-   
+
    if (!newdirs.empty()) {
       newdirs = recurse_directories(newdirs.begin(), newdirs.end());
       dirs.reserve(dirs.size() + newdirs.size());

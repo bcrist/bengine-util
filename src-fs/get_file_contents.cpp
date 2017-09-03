@@ -251,7 +251,7 @@ Buf<UC> get_file_contents_buf(FILE* fd, std::error_code& ec) noexcept {
 ///////////////////////////////////////////////////////////////////////////////
 S get_file_contents_string(const Path& path) {
    S data;
-   
+
    try {
       if (!fs::exists(path)) {
          throw fs::filesystem_error("File not found", path, std::make_error_code(std::errc::no_such_file_or_directory));

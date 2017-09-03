@@ -350,7 +350,7 @@ int util_sprint_r_impl(lua_State* L) {
       lua_rawset(L, 4);
    }
 
-   
+
    S output = lua_tostring(L, 1);
 
    lua_pushcfunction(L, util_print_r_get_first);

@@ -54,7 +54,7 @@ protected:
    using staticmetanode = ChunkedListMetanode<pointer, M, S>;
    using metanode = ChunkedListMetanode<pointer, M>;
    using metatypes = t::ContainerTypes<metanode, allocator>;
-   
+
    using node_alloc = typename nodetypes::allocator;
    using meta_alloc = typename metatypes::allocator;
 
@@ -273,7 +273,7 @@ public:
    void push_back(value_type&& value);
    template <class... P>
    void emplace_back(P&&... args);
-   
+
    void pop_back();
 
    void clear() noexcept;

@@ -83,18 +83,18 @@ Buf<UC> deflate(const UC* uncompressed, std::size_t uncompressed_size, bool enco
       compressed_size += stream.total_out;
 
    } while (result == Z_OK);
-   
+
    ::deflateEnd(&stream);
    if (result != Z_STREAM_END) {
       ec = zlib_result_code(result);
    }
-   
+
    if (encode_length) {
       compressed_size += sizeof(L);
       L size = bo::to_net(static_cast<L>(uncompressed_size));
       memcpy(buffer.get(), &size, sizeof(L));
    }
-   
+
    if (buffer.size() > compressed_size + 100 && buffer.size() > (compressed_size / 8) * 9) {
       try {
          buffer = copy_buf(sub_buf(buffer, 0, compressed_size));
@@ -147,7 +147,7 @@ std::size_t inflate(const UC* compressed, std::size_t compressed_size, UC* uncom
    stream.opaque = (voidpf)0;
    stream.next_in = (const Bytef*)in;
    stream.avail_in = 0;
-   
+
    int result = inflateInit(&stream);
    if (result != Z_OK) {
       ec = zlib_result_code(result);
@@ -331,7 +331,7 @@ Buf<UC> inflate_buf(const Buf<const UC>& compressed, std::size_t uncompressed_le
          uncompressed = Buf<UC>(uncompressed.get(), uncompressed_length, detail::delete_array);
       }
    }
-   
+
    return uncompressed;
 }
 

@@ -58,7 +58,7 @@ std::basic_ostream<E, T>& operator<<(std::basic_ostream<E, T>& os, const Xorshif
 
       os << state.data[(i + state.index + 1) & state_type::state_length_bitmask];
    }
-   
+
    return os;
 }
 

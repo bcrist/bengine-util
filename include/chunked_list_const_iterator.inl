@@ -12,7 +12,7 @@ typename ChunkedListConstIterator<C>::reference ChunkedListConstIterator<C>::ope
    difference_type node_index = offset_ / C::chunk_size;
    difference_type index = offset_ % C::chunk_size;
    assert(index >= 0);
-   
+
    if (node_index_ != node_index) {
       node_ = container_->get_node_(node_index);
       node_index_ = node_index;

@@ -127,13 +127,13 @@ int fs_path_remove(lua_State* L) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-int fs_path_canonical(lua_State* L) {   
+int fs_path_canonical(lua_State* L) {
    lua_pushstring(L, fs::canonical(luaL_checkstring(L, 1)).string().c_str());
    return 1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-int fs_path_absolute(lua_State* L) {   
+int fs_path_absolute(lua_State* L) {
    lua_pushstring(L, fs::absolute(luaL_checkstring(L, 1)).string().c_str());
    return 1;
 }
@@ -157,7 +157,7 @@ int fs_path_equivalent(lua_State* L) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-int fs_root_path(lua_State* L) {   
+int fs_root_path(lua_State* L) {
    Path p(luaL_checkstring(L, 1));
    p = p.root_path();
 

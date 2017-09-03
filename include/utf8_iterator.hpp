@@ -28,7 +28,7 @@ namespace be::util {
 ///         Continuation bytes with no corresponding initial byte, invalid
 ///         codepoints (above U+10FFFF) and bytes which are never used in UTF-8
 ///         will all be replaced by one or more U+FFFD codepoints (the
-///         replacement character) when dereferenced or traversed over. 
+///         replacement character) when dereferenced or traversed over.
 ///         Codepoints encoded using more bytes than necessary will not be
 ///         replaced, but an error condition will still be set.  Similarly,
 ///         codepoints in the range [U+D800, U+DFFF] which are reserved for
@@ -51,7 +51,7 @@ namespace be::util {
 ///         operator++ must never be called on an iterator "iter" referencing
 ///         a string "str" when iter == str.end(), and operator-- must never be
 ///         called when iter == str.begin().
-///        
+///
 ///         If a Utf8Iterator is created from an arbitrary offset into a UTF-8
 ///         string, it is possible that it will point to one of a multi-byte
 ///         codepoint's continuation bytes.  In this case, operator* will
@@ -92,7 +92,7 @@ public:
    Utf8Iterator& normalize() noexcept;
 
    C32 operator*() const noexcept;
- 
+
 private:
    std::pair<C32, error_type> try_parse_(S::const_iterator& it) const noexcept;
 

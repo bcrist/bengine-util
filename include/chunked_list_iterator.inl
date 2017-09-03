@@ -111,7 +111,7 @@ ChunkedListIterator<C>::ChunkedListIterator(C* c, difference_type offset)
 
 ///////////////////////////////////////////////////////////////////////////////
 template <typename C>
-ChunkedListIterator<C>::ChunkedListIterator(const_iterator& other) 
+ChunkedListIterator<C>::ChunkedListIterator(const_iterator& other)
    : const_iterator(other)
 { }
 
