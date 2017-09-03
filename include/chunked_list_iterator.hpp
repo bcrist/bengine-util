@@ -19,7 +19,7 @@ public:
    using pointer = typename C::pointer;
    using reference = typename C::reference;
 
-   iterator() { }
+   ChunkedListIterator() { }
 
    reference operator*() const;
    pointer operator->() const;
@@ -37,10 +37,10 @@ public:
    reference operator[](difference_type offset) const;
 
 protected:
-   iterator(C* c, difference_type offset);
+   ChunkedListIterator(C* c, difference_type offset);
 
 private:
-   explicit iterator(const_iterator& other);
+   explicit ChunkedListIterator(const_iterator& other);
 };
 
 template <typename C>

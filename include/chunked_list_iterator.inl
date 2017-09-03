@@ -9,29 +9,29 @@ namespace detail {
 ///////////////////////////////////////////////////////////////////////////////
 template <typename C>
 typename ChunkedListIterator<C>::reference ChunkedListIterator<C>::operator*() const {
-   difference_type node_index = offset_ / C::chunk_size;
-   difference_type index = offset_ % C::chunk_size;
+   difference_type node_index = this->offset_ / C::chunk_size;
+   difference_type index = this->offset_ % C::chunk_size;
    assert(index >= 0);
 
-   if (node_index_ != node_index) {
-      node_ = container_->get_node_(node_index);
-      node_index_ = node_index;
+   if (this->node_index_ != node_index) {
+      this->node_ = this->container_->get_node_(node_index);
+      this->node_index_ = node_index;
    }
-   return node_[index];
+   return this->node_[index];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 template <typename C>
 typename ChunkedListIterator<C>::pointer ChunkedListIterator<C>::operator->() const {
-   difference_type node_index = offset_ / C::chunk_size;
-   difference_type index = offset_ % C::chunk_size;
+   difference_type node_index = this->offset_ / C::chunk_size;
+   difference_type index = this->offset_ % C::chunk_size;
    assert(index >= 0);
 
-   if (node_index_ != node_index) {
-      node_ = container_->get_node_(node_index);
-      node_index_ = node_index;
+   if (this->node_index_ != node_index) {
+      this->node_ = this->container_->get_node_(node_index);
+      this->node_index_ = node_index;
    }
-   return node_ + index;
+   return this->node_ + index;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

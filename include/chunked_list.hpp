@@ -34,8 +34,8 @@ public:
 ///////////////////////////////////////////////////////////////////////////////
 template<typename T, typename A, std::size_t N, std::size_t M, std::size_t S>
 class ChunkedListBase {
-protected:
    using base = ChunkedListBase<T, A, N, M, S>;
+protected:
    using node = ChunkedListNode<T, N>;
    using allocator = typename t::Select<t::IsSimpleAlloc<typename t::ContainerTypes<T, A>::allocator>::value, A, std::allocator<T>>::type;
    using contypes = t::ContainerTypes<T, allocator>;
@@ -62,16 +62,16 @@ protected:
       : triplet_(OneArgTag(), OneArgTag(), alloc, alloc)
    { }
 
-   void setAllocator_(const allocator& alloc) {
+   void set_allocator_(const allocator& alloc) {
       get_node_alloc_() = alloc;
       get_meta_alloc_() = alloc;
    }
 
-   void setNodeAllocator_(const node_alloc& alloc) {
+   void set_node_allocator_(const node_alloc& alloc) {
       get_node_alloc_() = alloc;
    }
 
-   void setMetanodeAllocator_(const meta_alloc& alloc) {
+   void set_metanode_allocator_(const meta_alloc& alloc) {
       get_meta_alloc_() = alloc;
    }
 
@@ -175,6 +175,7 @@ private:
 template <typename T, typename A = std::allocator<T>, std::size_t N = 16, std::size_t M = 7, std::size_t S = 2>
 class ChunkedList : public detail::ChunkedListBase<T, A, N, M, S> {
    using container = ChunkedList<T, A, N, M, S>;
+   using base = detail::ChunkedListBase<T, A, N, M, S>;
    using node_alloc = typename base::node_alloc;
    using meta_alloc = typename base::meta_alloc;
    using staticmetanode = typename base::staticmetanode;

@@ -15,11 +15,6 @@
 // #  ifdef BE_PCH_BOOST_ASIO
 // #     include <boost/asio/io_service.hpp>
 // #  endif
-// #  ifdef BE_PCH_BOOST_TYPE_ERASURE
-// #     include <boost/type_erasure/any.hpp>
-// #     include <boost/type_erasure/operators.hpp>
-// #     include <boost/mpl/vector.hpp>
-// #  endif
 // #  ifdef BE_PCH_BOOST_CONTAINER
 // #     include <boost/container/deque.hpp>
 // #  endif

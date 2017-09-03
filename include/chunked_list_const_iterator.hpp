@@ -19,7 +19,7 @@ public:
    using pointer = typename C::const_pointer;
    using reference = typename C::const_reference;
 
-   iterator() { }
+   ChunkedListConstIterator() { }
 
    reference operator*() const;
    pointer operator->() const;
@@ -44,7 +44,7 @@ public:
    bool operator>=(const iterator& other) const;
 
 protected:
-   iterator(const C* c, difference_type offset);
+   ChunkedListConstIterator(const C* c, difference_type offset);
 
    difference_type offset_;
    mutable difference_type node_index_;
