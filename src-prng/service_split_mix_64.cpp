@@ -2,7 +2,7 @@
 #include "service_split_mix_64.hpp"
 #include "fnv.hpp"
 #include <be/core/service_helpers.hpp>
-#include <be/core/service_log.hpp>
+#include <be/core/default_log.hpp>
 #include <be/core/time.hpp>
 #include <thread>
 
