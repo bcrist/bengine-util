@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_STRING_PARSE_STRING_ERROR_CONDITION_HPP_
 #define BE_UTIL_STRING_PARSE_STRING_ERROR_CONDITION_HPP_
 
-#include "util_string_autolink.hpp"
 #include <be/core/enum_traits.hpp>
 #include <be/core/exceptions.hpp>
 

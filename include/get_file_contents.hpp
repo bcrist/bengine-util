@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_FS_GET_FILE_CONTENTS_HPP_
 #define BE_UTIL_FS_GET_FILE_CONTENTS_HPP_
 
-#include "util_fs_autolink.hpp"
 #include <be/core/filesystem.hpp>
 #include <be/core/buf.hpp>
 

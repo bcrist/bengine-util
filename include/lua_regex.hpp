@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_LUA_REGEX_HPP_
 #define BE_UTIL_LUA_REGEX_HPP_
 
-#include "lua_util_autolink.hpp"
 #include <lua/lua.h>
 #include <lua/lauxlib.h>
 

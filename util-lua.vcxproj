@@ -55,7 +55,6 @@
     <ClInclude Include="include\lua_fnv256.hpp" />
     <ClInclude Include="include\lua_fs.hpp" />
     <ClInclude Include="include\lua_interpolate_string.hpp" />
-    <ClInclude Include="include\util_lua_autolink.hpp" />
     <ClInclude Include="include\lua_modules.hpp" />
     <ClInclude Include="include\lua_util.hpp" />
   </ItemGroup>

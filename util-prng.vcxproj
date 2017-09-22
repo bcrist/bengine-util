@@ -59,7 +59,6 @@
     <ClInclude Include="include\service_xorshift_1024_star.hpp" />
     <ClInclude Include="include\service_xorshift_128_plus.hpp" />
     <ClInclude Include="include\split_mix_64.hpp" />
-    <ClInclude Include="include\util_prng_autolink.hpp" />
     <ClInclude Include="include\xoroshiro_128_plus.hpp" />
     <ClInclude Include="include\xorshift_1024_star.hpp" />
     <ClInclude Include="include\xorshift_128_plus.hpp" />

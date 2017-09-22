@@ -59,9 +59,6 @@
     <ClInclude Include="include\interpolate_string.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\util_string_autolink.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\parse_string_error_condition.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -41,6 +41,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Link>
+      <AdditionalDependencies>testing-debug.lib;core-id-with-names-debug.lib;core-debug.lib;zlib-static-debug.lib;util-debug.lib;util-compression-debug.lib;util-prng-debug.lib;util-string-debug.lib;util-fs-debug.lib;util-lua-debug.lib;belua-debug.lib;luaxx-debug.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Link>
+      <AdditionalDependencies>testing.lib;core-id-with-names.lib;core.lib;zlib-static.lib;util.lib;util-compression.lib;util-prng.lib;util-string.lib;util-fs.lib;util-lua.lib;belua.lib;luaxx.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="perf\associative_containers.cpp" />
     <ClCompile Include="perf\perf_main.cpp" />

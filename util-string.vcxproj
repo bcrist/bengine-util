@@ -66,7 +66,6 @@
     <ClInclude Include="include\utf16_widen_narrow.hpp" />
     <ClInclude Include="include\utf8_codepoint.hpp" />
     <ClInclude Include="include\utf8_iterator.hpp" />
-    <ClInclude Include="include\util_string_autolink.hpp" />
     <ClInclude Include="src-string\pch.hpp" />
   </ItemGroup>
   <ItemGroup>

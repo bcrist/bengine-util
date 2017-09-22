@@ -1,7 +1,6 @@
 #ifndef BE_UTIL_STRING_BINARY_UNITS_HPP_
 #define BE_UTIL_STRING_BINARY_UNITS_HPP_
 
-#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 
 namespace be::util {

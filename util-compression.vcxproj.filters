@@ -20,9 +20,6 @@
     <ClInclude Include="include\zlib.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\util_compression_autolink.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\zlib_result_code.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

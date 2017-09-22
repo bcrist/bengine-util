@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_STRING_UTF8_CODEPOINT_HPP_
 #define BE_UTIL_STRING_UTF8_CODEPOINT_HPP_
 
-#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 
 namespace be::util {

@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_COMPRESSION_ZLIB_RESULT_CODE_HPP_
 #define BE_UTIL_COMPRESSION_ZLIB_RESULT_CODE_HPP_
 
-#include "util_compression_autolink.hpp"
 #include <be/core/enum_traits.hpp>
 #include <zlib/zlib.h>
 

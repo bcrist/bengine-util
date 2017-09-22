@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_PRNG_SERVICE_XORSHIFT_128_PLUS_HPP_
 #define BE_UTIL_PRNG_SERVICE_XORSHIFT_128_PLUS_HPP_
 
-#include "util_prng_autolink.hpp"
 #include "xorshift_128_plus.hpp"
 #include <be/core/service.hpp>
 

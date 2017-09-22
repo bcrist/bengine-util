@@ -66,14 +66,24 @@ module 'util' {
       icon 'icon/bengine-test-perf.ico',
       link_project {
          'testing',
-         'util'
+         'util',
+         'util-compression',
+         'util-prng',
+         'util-string',
+         'util-fs',
+         'util-lua'
       }
    },
    app '-perf' {
       icon 'icon/bengine-test-perf.ico',
       link_project {
          'testing',
-         'util'
+         'util',
+         'util-compression',
+         'util-prng',
+         'util-string',
+         'util-fs',
+         'util-lua'
       }
    }
 }

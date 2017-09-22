@@ -2,8 +2,6 @@
 #ifndef BE_UTIL_FS_PATHS_HPP_
 #define BE_UTIL_FS_PATHS_HPP_
 
-#include "util_fs_autolink.hpp"
-#include "util_prng_autolink.hpp"
 #include <be/core/be.hpp>
 #include <be/core/filesystem.hpp>
 

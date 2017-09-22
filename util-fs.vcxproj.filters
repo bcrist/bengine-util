@@ -32,9 +32,6 @@
     <ClInclude Include="include\paths.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\util_fs_autolink.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\get_file_contents.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -54,7 +54,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\util_compression_autolink.hpp" />
     <ClInclude Include="include\zlib.hpp" />
     <ClInclude Include="include\zlib_result_code.hpp" />
     <ClInclude Include="src-compression\pch.hpp" />

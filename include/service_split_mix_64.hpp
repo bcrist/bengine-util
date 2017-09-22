@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_PRNG_SERVICE_SPLIT_MIX_64_HPP_
 #define BE_UTIL_PRNG_SERVICE_SPLIT_MIX_64_HPP_
 
-#include "util_prng_autolink.hpp"
 #include "split_mix_64.hpp"
 #include <be/core/service.hpp>
 

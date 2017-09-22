@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_PRNG_SERVICE_XORSHIFT_1024_STAR_HPP_
 #define BE_UTIL_PRNG_SERVICE_XORSHIFT_1024_STAR_HPP_
 
-#include "util_prng_autolink.hpp"
 #include "xorshift_1024_star.hpp"
 #include <be/core/service.hpp>
 

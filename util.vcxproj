@@ -59,7 +59,6 @@
     <ClInclude Include="include\chunked_list_iterator.hpp" />
     <ClInclude Include="include\fnv.hpp" />
     <ClInclude Include="include\iirf.hpp" />
-    <ClInclude Include="include\util_autolink.hpp" />
     <ClInclude Include="include\version.hpp" />
     <ClInclude Include="src\pch.hpp" />
   </ItemGroup>

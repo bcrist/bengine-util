@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_FNV_HPP_
 #define BE_UTIL_FNV_HPP_
 
-#include "util_autolink.hpp"
 #include <be/core/be.hpp>
 #include <gsl/string_span>
 

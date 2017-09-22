@@ -59,7 +59,6 @@
     <ClInclude Include="include\get_file_contents.hpp" />
     <ClInclude Include="include\paths.hpp" />
     <ClInclude Include="include\path_glob.hpp" />
-    <ClInclude Include="include\util_fs_autolink.hpp" />
     <ClInclude Include="src-fs\pch.hpp" />
   </ItemGroup>
   <ItemGroup>

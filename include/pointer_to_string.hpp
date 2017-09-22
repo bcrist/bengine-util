@@ -2,7 +2,6 @@
 #ifndef BE_UTIL_STRING_POINTER_TO_STRING_HPP_
 #define BE_UTIL_STRING_POINTER_TO_STRING_HPP_
 
-#include "util_string_autolink.hpp"
 #include <be/core/be.hpp>
 #include <be/core/t_size.hpp>
 

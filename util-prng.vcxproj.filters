@@ -47,9 +47,6 @@
     <ClInclude Include="include\service_xorshift_1024_star.hpp">
       <Filter>Header Files\services</Filter>
     </ClInclude>
-    <ClInclude Include="include\util_prng_autolink.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src-prng\pch.cpp">
