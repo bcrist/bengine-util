@@ -11,15 +11,21 @@ using namespace be::util;
 
 namespace {
 
-auto functor = [](const S& str) { return str; };
+auto functor = [](SV str) { return str; };
 
 struct Stateful {
-   S operator()(const S&) {
+   S operator()(SV) {
       return std::to_string(++count);
    }
 private:
    int count = 0;
 };
+
+bool test_interpolate_string_ex(SV input, int interp, int noninterp) {
+   int i = 0, n = 0;
+   interpolate_string_ex(input, [&](SV) { ++n; }, [&](SV) { ++i; });
+   return i == interp && n == noninterp;
+}
 
 } // ()
 
@@ -50,6 +56,25 @@ TEST_CASE("interpolate_string - Escaping", BE_CATCH_TAGS) {
 TEST_CASE("interpolate_string - Incomplete var tag", BE_CATCH_TAGS) {
    REQUIRE(interpolate_string("Hello $(World", functor) == "Hello $(World");
    REQUIRE(interpolate_string("aaa$(bbb) $(", functor) == "aaabbb $(");
+}
+
+TEST_CASE("interpolate_string_ex", BE_CATCH_TAGS) {
+   REQUIRE(test_interpolate_string_ex("$(asdf)", 1, 2));
+   REQUIRE(test_interpolate_string_ex("aaa$(bbb)", 1, 2));
+   
+   REQUIRE(test_interpolate_string_ex("$(asdf)$(iiii)", 2, 3));
+   REQUIRE(test_interpolate_string_ex("aaa$(bbb)aaa$(bbb) $(bbb)", 3, 4));
+   REQUIRE(test_interpolate_string_ex("a$() $() $(asdf)", 3, 4));
+
+   REQUIRE(test_interpolate_string_ex("$(asdf$(iiii))", 1, 2));
+   REQUIRE(test_interpolate_string_ex("$($()$())", 2, 3));
+
+   REQUIRE(test_interpolate_string_ex("$$ $$ $$", 0, 7));
+   REQUIRE(test_interpolate_string_ex("$($$)", 1, 2));
+   REQUIRE(test_interpolate_string_ex("$$$()", 1, 4));
+
+   REQUIRE(test_interpolate_string_ex("Hello $(World", 0, 2));
+   REQUIRE(test_interpolate_string_ex("aaa$(bbb) $(", 1, 3));
 }
 
 #endif

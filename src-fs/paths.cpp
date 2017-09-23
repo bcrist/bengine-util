@@ -131,7 +131,7 @@ S expand_path(const S& path, bool use_config) {
    S new_path;
    if (use_config) {
       // replace configuration variables
-      new_path = interpolate_string(path, [](S var) {
+      new_path = interpolate_string(path, [](SV var) {
          // TODO Configuration service
          //Id var_id("Path." + var);
          //const Configuration& cfg = service<Configuration>();
