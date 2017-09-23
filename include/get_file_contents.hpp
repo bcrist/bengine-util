@@ -14,6 +14,8 @@ Buf<UC> get_file_contents_buf(FILE* fd, std::error_code& ec) noexcept;
 
 S get_file_contents_string(const Path& path);
 S get_file_contents_string(const Path& path, std::error_code& ec) noexcept;
+S get_text_file_contents_string(const Path& path);
+S get_text_file_contents_string(const Path& path, std::error_code& ec) noexcept;
 Buf<UC> get_file_contents_buf(const Path& path);
 Buf<UC> get_file_contents_buf(const Path& path, std::error_code& ec) noexcept;
 

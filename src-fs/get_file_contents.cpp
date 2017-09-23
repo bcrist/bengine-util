@@ -308,6 +308,73 @@ S get_file_contents_string(const Path& path, std::error_code& ec) noexcept {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+S get_text_file_contents_string(const Path& path) {
+   S data;
+
+   try {
+      if (!fs::exists(path)) {
+         throw fs::filesystem_error("File not found", path, std::make_error_code(std::errc::no_such_file_or_directory));
+      } else {
+         std::ifstream ifs;
+         ifs.exceptions(std::ios::badbit | std::ios::failbit);
+         ifs.open(path.native());
+         ifs.seekg(0, std::ios::end);
+         size_t size = (size_t)ifs.tellg();
+         data.resize(size);
+         ifs.seekg(0, std::ios::beg);
+         // read() may set failbit (and eofbit) if \r\n -> \n conversion causes the number of characters
+         // read to be less than size, so lets make sure not to throw if that happens.
+         ifs.exceptions(std::ios::badbit);
+         ifs.read(((char*)(&data[0])), size);
+         data.resize(ifs.gcount()); // because we might have read less than size characters
+      }
+   } catch (const std::ios_base::failure& e) {
+      throw fs::filesystem_error(e.what(), path, e.code());
+   } catch (const std::length_error& e) {
+      throw fs::filesystem_error(e.what(), path, std::make_error_code(std::errc::file_too_large));
+   } catch (const std::bad_alloc& e) {
+      throw fs::filesystem_error(e.what(), path, std::make_error_code(std::errc::not_enough_memory));
+   }
+
+   return data;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+S get_text_file_contents_string(const Path& path, std::error_code& ec) noexcept {
+   S data;
+
+   try {
+      if (!fs::exists(path)) {
+         ec = std::make_error_code(std::errc::no_such_file_or_directory);
+      } else {
+         std::ifstream ifs;
+         ifs.exceptions(std::ios::badbit | std::ios::failbit);
+         ifs.open(path.native());
+         ifs.seekg(0, std::ios::end);
+         size_t size = (size_t)ifs.tellg();
+         data.resize(size);
+         ifs.seekg(0, std::ios::beg);
+         // read() may set failbit (and eofbit) if \r\n -> \n conversion causes the number of characters
+         // read to be less than size, so lets make sure not to throw if that happens.
+         ifs.exceptions(std::ios::badbit);
+         ifs.read(((char*)(&data[0])), size);
+         data.resize(ifs.gcount()); // because we might have read less than size characters
+      }
+   } catch (const std::ios_base::failure& e) {
+      ec = e.code();
+      data = S();
+   } catch (const std::length_error&) {
+      ec = std::make_error_code(std::errc::file_too_large);
+      data = S();
+   } catch (const std::bad_alloc&) {
+      ec = std::make_error_code(std::errc::not_enough_memory);
+      data = S();
+   }
+
+   return data;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 Buf<UC> get_file_contents_buf(const Path& path) {
    Buf<UC> data;
 

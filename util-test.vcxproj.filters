@@ -44,6 +44,9 @@
     <ClCompile Include="test\test_interpolate_string.cpp">
       <Filter>Tests\strings</Filter>
     </ClCompile>
+    <ClCompile Include="test\test_line_endings.cpp">
+      <Filter>Tests\strings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test\prng_test_util.hpp" />

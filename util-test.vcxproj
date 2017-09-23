@@ -59,6 +59,7 @@
     <ClCompile Include="test\test_binary_units.cpp" />
     <ClCompile Include="test\test_chunked_list.cpp" />
     <ClCompile Include="test\test_interpolate_string.cpp" />
+    <ClCompile Include="test\test_line_endings.cpp" />
     <ClCompile Include="test\test_split_mix_64.cpp" />
     <ClCompile Include="test\test_main.cpp" />
     <ClCompile Include="test\test_utf8_iterator.cpp" />

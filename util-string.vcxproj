@@ -58,6 +58,7 @@
     <ClInclude Include="include\base64_encode.hpp" />
     <ClInclude Include="include\binary_units.hpp" />
     <ClInclude Include="include\keyword_parser.hpp" />
+    <ClInclude Include="include\line_endings.hpp" />
     <ClInclude Include="include\parse_numeric_string.hpp" />
     <ClInclude Include="include\parse_string_error_condition.hpp" />
     <ClInclude Include="include\pointer_to_string.hpp" />
@@ -70,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src-string\binary_units.cpp" />
+    <ClCompile Include="src-string\line_endings.cpp" />
     <ClCompile Include="src-string\native\vc_win\utf16_widen_narrow.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
