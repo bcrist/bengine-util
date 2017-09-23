@@ -4,6 +4,7 @@
 
 #include "paths.hpp"
 #include <be/core/logging.hpp>
+#include <be/core/log_exception.hpp>
 #include <regex>
 
 // TODO replace with directory walker visitors
@@ -34,8 +35,7 @@ namespace detail {
 template <typename I>
 void greb_helper(std::vector<Path>& paths, const Path& p, I begin, I end, PathMatchType match_type);
 
-template <typename I>
-std::vector<Path> recurse_directories(I begin, I end);
+void recurse_directories(const Path& parent, std::vector<Path>& out);
 
 } // be::util::detail
 

@@ -9,6 +9,8 @@ namespace be::util {
 
 void put_file_contents(const Path& path, const S& contents);
 void put_file_contents(const Path& path, const S& contents, std::error_code& ec) noexcept;
+void put_text_file_contents(const Path& path, const S& contents);
+void put_text_file_contents(const Path& path, const S& contents, std::error_code& ec) noexcept;
 void put_file_contents(const Path& path, const Buf<const UC>& contents);
 void put_file_contents(const Path& path, const Buf<const UC>& contents, std::error_code& ec) noexcept;
 

@@ -57,6 +57,71 @@ void put_file_contents(const Path& path, const S& contents, std::error_code& ec)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+void put_text_file_contents(const Path& path, const S& contents) {
+   std::size_t existing_size = 0;
+   if (fs::exists(path)) {
+      existing_size = fs::file_size(path);
+   }
+
+   auto space_info = fs::space(path);
+   if (contents.size() > existing_size) {
+      if (contents.size() - existing_size > space_info.free) {
+         throw fs::filesystem_error("Not enough free disk space to save file", path, std::make_error_code(std::errc::no_space_on_device));
+      }
+   }
+
+   try {
+      std::ofstream ofs;
+      ofs.exceptions(std::ios::failbit | std::ios::badbit);
+      ofs.open(path.native(), std::ios::trunc);
+      for (auto it = contents.begin(), end = contents.end();; ++it) {
+         auto it2 = std::find(it, end, '\r');
+         ofs.write(&*it, it2 - it);
+         it = it2;
+         if (it == end) {
+            break;
+         }
+      }
+   } catch (const std::ios_base::failure& e) {
+      throw fs::filesystem_error(e.what(), path, e.code());
+   }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+void put_text_file_contents(const Path& path, const S& contents, std::error_code& ec) noexcept {
+   std::size_t existing_size = 0;
+   auto space_info = fs::space(path, ec);
+   if (fs::exists(path, ec)) {
+      existing_size = fs::file_size(path, ec);
+   }
+
+   if (!ec) {
+      if (contents.size() > existing_size) {
+         if (contents.size() - existing_size > space_info.free) {
+            ec = std::make_error_code(std::errc::no_space_on_device);
+            return;
+         }
+      }
+
+      try {
+         std::ofstream ofs;
+         ofs.exceptions(std::ios::failbit | std::ios::badbit);
+         ofs.open(path.native(), std::ios::trunc);
+         for (auto it = contents.begin(), end = contents.end();; ++it) {
+            auto it2 = std::find(it, end, '\r');
+            ofs.write(&*it, it2 - it);
+            it = it2;
+            if (it == end) {
+               break;
+            }
+         }
+      } catch (const std::ios_base::failure& e) {
+         ec = e.code();
+      }
+   }
+}
+
+///////////////////////////////////////////////////////////////////////////////
 void put_file_contents(const Path& path, const Buf<const UC>& contents) {
    std::size_t existing_size = 0;
    if (fs::exists(path)) {

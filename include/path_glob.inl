@@ -60,52 +60,26 @@ void greb_helper(std::vector<Path>& paths, const Path& p, I begin, I end, PathMa
          }
       }
    } catch (const fs::filesystem_error& e) {
-      be_notice() << "Filesystem Error"
-         & attr("Error Code") << e.code()
-         & attr("Path 1") << e.path1()
-         & attr("Path 2") << e.path2()
-         | default_log();
+      log_exception(e);
    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-template <typename I>
-std::vector<Path> recurse_directories(I begin, I end) {
+inline void recurse_directories(const Path& parent, std::vector<Path>& out) {
    typedef fs::directory_iterator DIter;
+   try {
+      auto stat = fs::status(parent);
+      if (fs::exists(stat) && fs::is_directory(stat)) {
+         out.push_back(parent);
 
-   std::vector<Path> dirs(begin, end);
-   std::vector<Path> newdirs;
-
-   for (I it = begin; it != end; ++it) {
-      try {
-         const Path& p = *it;
-         if (fs::exists(p) && fs::is_directory(p)) {
-            for (DIter i(p), ie; i != ie; ++i) {
-               const Path& newp = i->path();
-
-               if (is_directory(newp)) {
-                  newdirs.push_back(newp);
-               }
-            }
+         for (DIter i(parent), end; i != end; ++i) {
+            const Path& child = i->path();
+            recurse_directories(child, out);
          }
-      } catch (const fs::filesystem_error& e) {
-         be_notice() << "Filesystem Error"
-            & attr("Error Code") << e.code()
-            & attr("Path 1") << e.path1()
-            & attr("Path 2") << e.path2()
-            | default_log();
       }
+   } catch (const fs::filesystem_error& e) {
+      log_exception(e);
    }
-
-   if (!newdirs.empty()) {
-      newdirs = recurse_directories(newdirs.begin(), newdirs.end());
-      dirs.reserve(dirs.size() + newdirs.size());
-      for (Path& p : newdirs) {
-         dirs.push_back(std::move(p));
-      }
-   }
-
-   return dirs;
 }
 
 } // be::util::detail
@@ -223,7 +197,13 @@ std::vector<Path> greb(const S& pattern, I begin, I end, PathMatchType match_typ
    std::vector<Path> paths;
 
    if ((U8)match_type & (U8)PathMatchType::recursive) {
-      paths = greb(pattern, detail::recurse_directories(begin, end), (PathMatchType)((U8)match_type & (U8)PathMatchType::all));
+      std::vector<Path> parents;
+      while (begin != end) {
+         detail::recurse_directories(*begin, parents);
+         ++begin;
+      }
+
+      paths = greb(pattern, parents, (PathMatchType)((U8)match_type & (U8)PathMatchType::all));
    } else {
       std::vector<std::pair<S, std::regex>> regexen;
 
