@@ -63,7 +63,7 @@
     <ClInclude Include="include\parse_string_error_condition.hpp" />
     <ClInclude Include="include\pointer_to_string.hpp" />
     <ClInclude Include="include\interpolate_string.hpp" />
-    <ClInclude Include="include\string_span.hpp" />
+    <ClInclude Include="include\trim.hpp" />
     <ClInclude Include="include\utf16_widen_narrow.hpp" />
     <ClInclude Include="include\utf8_codepoint.hpp" />
     <ClInclude Include="include\utf8_iterator.hpp" />

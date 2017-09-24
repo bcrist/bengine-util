@@ -62,7 +62,7 @@ S u256_tostring(const U256& n) {
 } // be::util::()
 
 ///////////////////////////////////////////////////////////////////////////////
-S fnv256_0(gsl::cstring_span<> input) {
+S fnv256_0(SV input) {
    U256 hash = { { } };
    for (auto i(input.begin()), end(input.end()); i != end; ++i) {
       U256 t = hash;
@@ -88,7 +88,7 @@ S fnv256_0(gsl::cstring_span<> input) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-S fnv256_1(gsl::cstring_span<> input) {
+S fnv256_1(SV input) {
    U256 hash = { {
          0xdd268dbcu, 0xaac55036u, 0x2d98c384u, 0xc4e576ccu,
          0xc8b15368u, 0x47b6bbb3u, 0x1023b4c8u, 0xcaee0535u
@@ -118,7 +118,7 @@ S fnv256_1(gsl::cstring_span<> input) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-S fnv256_1a(gsl::cstring_span<> input) {
+S fnv256_1a(SV input) {
    U256 hash = { {
          0xdd268dbcu, 0xaac55036u, 0x2d98c384u, 0xc4e576ccu,
          0xc8b15368u, 0x47b6bbb3u, 0x1023b4c8u, 0xcaee0535u

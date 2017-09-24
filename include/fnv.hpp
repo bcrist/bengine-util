@@ -115,9 +115,9 @@ T fnv1a(T basis, I begin, I end) {
    return T(detail::Fnva<U>()(U(basis), begin, end));
 }
 
-S fnv256_0(gsl::cstring_span<> input);
-S fnv256_1(gsl::cstring_span<> input);
-S fnv256_1a(gsl::cstring_span<> input);
+S fnv256_0(SV input);
+S fnv256_1(SV input);
+S fnv256_1a(SV input);
 
 } // be::util
 

@@ -38,9 +38,6 @@
     <ClInclude Include="include\pointer_to_string.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\string_span.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\utf8_codepoint.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\line_endings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\trim.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

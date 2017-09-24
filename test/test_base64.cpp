@@ -91,7 +91,7 @@ TEST_CASE("util::base64_decode premature padding", BE_CATCH_TAGS) {
 }
 
 TEST_CASE("util::base64_decode alternate S62/S63/P symbols", BE_CATCH_TAGS) {
-   typedef std::string(*DecodeFunc)(gsl::cstring_span<>);
+   typedef std::string(*DecodeFunc)(SV);
    DecodeFunc f = util::base64_decode_string<'.', ',', '?'>;
 
    REQUIRE(f(",,,.") == "\xff\xff\xfe");

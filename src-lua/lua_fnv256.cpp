@@ -1,5 +1,6 @@
 #include "lua_fnv256.hpp"
 #include <be/util/fnv.hpp>
+#include <be/belua/lua_helpers.hpp>
 
 namespace be::belua {
 
@@ -14,7 +15,7 @@ const char* metatable() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-gsl::cstring_span<> parse_input(lua_State* L) {
+SV parse_input(lua_State* L) {
    // if the first parameter is "be.fnv256", remove it.
    if (lua_gettop(L) >= 1 && lua_istable(L, 1)) {
       lua_getmetatable(L, 1);
@@ -27,26 +28,24 @@ gsl::cstring_span<> parse_input(lua_State* L) {
       lua_pop(L, 2); // remove metatables
    }
 
-   std::size_t len;
-   const char* ptr = luaL_checklstring(L, 1, &len);
-   return gsl::cstring_span<>(ptr, len);
+   return belua::check_string_view(L, 1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 int fnv256_0(lua_State* L) {
-   lua_pushstring(L, util::fnv256_0(parse_input(L)).c_str());
+   belua::push_string(L, util::fnv256_0(parse_input(L)));
    return 1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 int fnv256_1(lua_State* L) {
-   lua_pushstring(L, util::fnv256_1(parse_input(L)).c_str());
+   belua::push_string(L, util::fnv256_1(parse_input(L)));
    return 1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 int fnv256_1a(lua_State* L) {
-   lua_pushstring(L, util::fnv256_1a(parse_input(L)).c_str());
+   belua::push_string(L, util::fnv256_1a(parse_input(L)));
    return 1;
 }
 

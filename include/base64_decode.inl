@@ -46,7 +46,7 @@ inline void base64_decode_1_byte(UC a, UC b, UC* out) {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <char S62, char S63, char P>
-std::size_t base64_decode(gsl::cstring_span<> encoded_data, UC* out) {
+std::size_t base64_decode(SV encoded_data, UC* out) {
    std::size_t remaining_bytes = encoded_data.size();
    const char* ptr = &(*encoded_data.begin());
    UC* begin = out;
@@ -87,7 +87,7 @@ std::size_t base64_decode(gsl::cstring_span<> encoded_data, UC* out) {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <char S62, char S63, char P>
-S base64_decode_string(gsl::cstring_span<> encoded_data) {
+S base64_decode_string(SV encoded_data) {
    S decoded;
 
    if (encoded_data.empty()) {
@@ -103,7 +103,7 @@ S base64_decode_string(gsl::cstring_span<> encoded_data) {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <char S62, char S63, char P>
-Buf<UC> base64_decode_buf(gsl::cstring_span<> encoded_data) {
+Buf<UC> base64_decode_buf(SV encoded_data) {
    if (encoded_data.empty()) {
       return Buf<UC>();
    }

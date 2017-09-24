@@ -2,8 +2,8 @@
 #ifndef BE_UTIL_STRING_KEYWORD_PARSER_HPP_
 #define BE_UTIL_STRING_KEYWORD_PARSER_HPP_
 
-#include "string_span.hpp"
 #include "parse_string_error_condition.hpp"
+#include "trim.hpp"
 #include <be/core/logging.hpp>
 #include <be/core/stack_trace.hpp>
 #include <algorithm>
@@ -17,7 +17,7 @@ namespace detail {
 
 ///////////////////////////////////////////////////////////////////////////////
 struct DefaultKeywordTransform {
-   S operator()(gsl::cstring_span<> input) const {
+   S operator()(SV input) const {
       S transformed;
       input = trim(input);
       transformed.assign(input.size(), '\0');
@@ -29,22 +29,14 @@ struct DefaultKeywordTransform {
          });
       return transformed;
    }
-
-   S operator()(const char* input) const {
-      return (*this)(gsl::ensure_z(input));
-   }
-
-   S operator()(const S& input) const {
-      return (*this)(gsl::cstring_span<>(input));
-   }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 struct DefaultKeywordEnumerator {
-   std::vector<S> operator()(const S& keyword) const {
+   std::vector<S> operator()(SV keyword) const {
       std::vector<S> keywords;
-      keywords.push_back(keyword);
-      S transformed = keyword;
+      keywords.push_back(S(keyword));
+      S transformed = S(keyword);
       transformed.erase(std::remove(transformed.begin(), transformed.end(), '_'), transformed.end());
       if (transformed != keyword) {
          keywords.push_back(std::move(transformed));
@@ -56,16 +48,8 @@ struct DefaultKeywordEnumerator {
 
 ///////////////////////////////////////////////////////////////////////////////
 struct ExactKeywordTransform {
-   S operator()(gsl::cstring_span<> input) const {
-      return to_string(input);
-   }
-
-   S operator()(const char* input) const {
+   S operator()(SV input) const {
       return S(input);
-   }
-
-   S operator()(S input) const {
-      return input;
    }
 };
 

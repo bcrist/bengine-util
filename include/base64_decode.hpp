@@ -3,15 +3,14 @@
 #define BE_UTIL_STRING_BASE64_DECODE_HPP_
 
 #include <be/core/buf.hpp>
-#include <gsl/string_span>
 
 namespace be::util {
 
 template <char S62 = '+', char S63 = '/', char P = '='>
-S base64_decode_string(gsl::cstring_span<> encoded_data);
+S base64_decode_string(SV encoded_data);
 
 template <char S62 = '+', char S63 = '/', char P = '='>
-Buf<UC> base64_decode_buf(gsl::cstring_span<> encoded_data);
+Buf<UC> base64_decode_buf(SV encoded_data);
 
 } // be::util
 
