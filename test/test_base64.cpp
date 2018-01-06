@@ -32,7 +32,7 @@ TEST_CASE("util::base64_encode Buf<UC> input", BE_CATCH_TAGS) {
 }
 
 TEST_CASE("util::base64_encode alternate S62/S63/P symbols", BE_CATCH_TAGS) {
-   typedef std::string(*EncodeFunc)(const std::string& data);
+   typedef std::string(*EncodeFunc)(SV data);
    EncodeFunc f = util::base64_encode<'-', '|', '>'>;
 
    REQUIRE(f("Vacuums Suck.") == "VmFjdXVtcyBTdWNrLg>>");
@@ -40,7 +40,7 @@ TEST_CASE("util::base64_encode alternate S62/S63/P symbols", BE_CATCH_TAGS) {
 }
 
 TEST_CASE("util::base64_encode unpadded output", BE_CATCH_TAGS) {
-   typedef std::string(*EncodeFunc)(const std::string& data);
+   typedef std::string(*EncodeFunc)(SV data);
    EncodeFunc f = util::base64_encode<'+', '/', 0>;
 
    REQUIRE(f("han shot first") == "aGFuIHNob3QgZmlyc3Q");

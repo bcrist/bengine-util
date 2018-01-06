@@ -3,6 +3,7 @@
 #include "xoroshiro_128_plus.hpp"
 #include "prng_test_util.hpp"
 #include <catch/catch.hpp>
+#include <sstream>
 
 #define BE_CATCH_TAGS "[util][util:prng]"
 
@@ -104,6 +105,9 @@ TEST_CASE("util::Xoroshiro128Plus explicit seed values", BE_CATCH_TAGS) {
 TEST_CASE("util::Xoroshiro128Plus seed sequences", BE_CATCH_TAGS) {
    SECTION("std::seed_seq") {
       std::seed_seq sseq { 1,2,3,4,5 };
+
+      t::IsSeedSeq<decltype(sseq), Xoroshiro128Plus<>>::value;
+
       Xoroshiro128Plus<> prng(sseq);
       Xoroshiro128Plus<4> prng2;
       std::seed_seq sseq2 { 1,2,3,4,5 };

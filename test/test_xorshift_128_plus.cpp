@@ -3,6 +3,7 @@
 #include "xorshift_128_plus.hpp"
 #include "prng_test_util.hpp"
 #include <catch/catch.hpp>
+#include <sstream>
 
 #define BE_CATCH_TAGS "[util][util:prng]"
 

@@ -2,6 +2,8 @@
 
 #include <catch/catch.hpp>
 #include <functional>
+#include <sstream>
+#include <iterator>
 #include "chunked_list.hpp"
 
 #define BE_CATCH_TAGS "[util][util:ChunkedList]"
@@ -14,8 +16,8 @@ static std::function<void(void*, size_t, const std::type_info&)> cb_dealloc;
 template <class T, template <class> class A = std::allocator>
 class ProxyAlloc : public A<T> {
 public:
-   using pointer = typename A<T>::pointer;
-   using size_type = typename A<T>::size_type;
+   using pointer = typename std::allocator_traits<A<T>>::pointer;
+   using size_type = typename std::allocator_traits<A<T>>::size_type;
 
    template<class O>
    struct rebind {
