@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>util-compression</ProjectName>
     <RootNamespace>util</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectGuid>{0FF49294-28AB-4416-A4F4-AAC48A02EFD2}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
