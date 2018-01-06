@@ -96,7 +96,7 @@ S base64_encode(const Buf<const UC>& data) {
 
 ///////////////////////////////////////////////////////////////////////////////
 template <char S62, char S63, char P>
-S base64_encode(const S& data) {
+S base64_encode(SV data) {
    return base64_encode<S62, S63, P>((Buf<const UC>)tmp_buf(data));
 }
 
