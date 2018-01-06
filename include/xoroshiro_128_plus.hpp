@@ -98,7 +98,7 @@ public:
       assign_(other);
    }
 
-   template <typename SeedSeq, typename = typename std::enable_if<t::IsSeedSeq<SeedSeq, type>::value>::type>
+   template <typename SeedSeq, typename = std::enable_if_t<t::IsSeedSeq<SeedSeq, type>::value>>
    explicit Xoroshiro128Plus(SeedSeq& sseq) {
       seed(sseq);
    }
