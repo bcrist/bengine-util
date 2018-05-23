@@ -164,7 +164,8 @@ TEST_CASE("util::Utf8Iterator - extra continuation bytes", BE_CATCH_TAGS) {
    // ' ' at beginning prevents buffer underrun
    //       0x80   0x80   _   U+2030         0x80   U+266B         U+266B         0x80   0x81   0x82   0x80   0x8A
    s = " " "\x80" "\x80" "_" "\xE2\x80\xB0" "\x80" "\xE2\x99\xAB" "\xE2\x99\xAB" "\x80" "\x81" "\x82" "\x80" "\x8A";
-   s.c_str(); // ensure string is null terminated.
+   const char* cstr = s.c_str(); // ensure string is null terminated.
+   BE_IGNORE(cstr);
    it = s.begin() + 1;  // skip initial space padding character
 
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
@@ -234,7 +235,8 @@ TEST_CASE("util::Utf8Iterator - missing continuation bytes", BE_CATCH_TAGS) {
    // ' ' at beginning prevents buffer underrun
    //       missing 1   A  missing 1   missing 2  _   missing 1      missing 2  missing 3
    s = " " "\xC2"      "A" "\xE2\xB0" "\xE2"     "_" "\xF4\x8A\xAF" "\xF4\x8A" "\xF4";
-   s.c_str(); // ensure string is null terminated.
+   const char* cstr = s.c_str(); // ensure string is null terminated.
+   BE_IGNORE(cstr);
    it = s.begin() + 1;  // skip initial space padding character
 
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
@@ -294,7 +296,8 @@ TEST_CASE("util::Utf8Iterator - invalid bytes", BE_CATCH_TAGS) {
    // ' ' at beginning prevents buffer underrun
    //       0xF8   _   U+2030         0xF9   U+266B         0xFA   0xFB   0xFC   0xFD   0xFE   0xFF
    s = " " "\xF8" "_" "\xE2\x80\xB0" "\xF9" "\xE2\x99\xAB" "\xFA" "\xFB" "\xFC" "\xFD" "\xFE" "\xFF";
-   s.c_str(); // ensure string is null terminated.
+   const char* cstr = s.c_str(); // ensure string is null terminated.
+   BE_IGNORE(cstr);
    it = s.begin() + 1;  // skip initial space padding character
 
    REQUIRE(it.error() == util::Utf8Iterator::error_type::no_error);
@@ -431,7 +434,8 @@ TEST_CASE("util::Utf8Iterator - torture test", BE_CATCH_TAGS) {
    // ' ' at beginning prevents buffer underrun
    //       0x80   0xF4   .   U+DFFF             0x80   0xFF   0xF088     ABC   U+4E80         U+1FFFFF
    s = " " "\x80" "\xF4" "." "\xF0\x8D\xBF\xBF" "\x80" "\xFF" "\xF0\x88" "ABC" "\xE4\xBA\x80" "\xF7\xBF\xBF\xBF";
-   s.c_str(); // ensure string is null terminated.
+   const char* cstr = s.c_str(); // ensure string is null terminated.
+   BE_IGNORE(cstr);
    it = s.begin() + 1;  // skip initial space padding character
 
    REQUIRE(*it == 0xFFFD); ++it;

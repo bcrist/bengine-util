@@ -568,7 +568,7 @@ void ChunkedList<T, A, N, M, S>::pop_back() {
          if (prev) {
             prev->next = delete_meta_(meta);
          } else {
-            get_static_metanode_().next = delete_meta_(meta);
+            this->get_static_metanode_().next = delete_meta_(meta);
          }
       }
    }
@@ -652,7 +652,7 @@ ChunkedList<T, A, N, M, S>::erase(const_iterator first, const_iterator last) {
 template <typename T, typename A, std::size_t N, std::size_t M, std::size_t S>
 typename ChunkedList<T, A, N, M, S>::allocator_type
 ChunkedList<T, A, N, M, S>::get_allocator() const {
-   return static_cast<allocator_type>(get_node_alloc_());
+   return static_cast<allocator_type>(this->get_node_alloc_());
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -660,10 +660,10 @@ template <typename T, typename A, std::size_t N, std::size_t M, std::size_t S>
 void ChunkedList<T, A, N, M, S>::resize(size_type count) {
    if (count < size_) {
       // pop back (size_ - count) elements
-      erase(const_iterator(this, difference_type(count)), end());
+      this->erase(const_iterator(this, difference_type(count)), end());
    } else if (size_ < count) {
       // add default constructed elements
-      push_back_n_(count - size_);
+      this->push_back_n_(count - size_);
    }
 }
 
@@ -672,10 +672,10 @@ template <typename T, typename A, std::size_t N, std::size_t M, std::size_t S>
 void ChunkedList<T, A, N, M, S>::resize(size_type count, const value_type& value) {
    if (count < size_) {
       // pop back (size_ - count) elements
-      erase(const_iterator(this, difference_type(size_ - count)), end())
+      this->erase(const_iterator(this, difference_type(size_ - count)), end());
    } else if (size_ < count) {
       // add copies of value
-      push_back_n_(count - size_, value);
+      this->push_back_n_(count - size_, value);
    }
 }
 
@@ -690,11 +690,11 @@ void ChunkedList<T, A, N, M, S>::swap(container& other) {
    using std::swap;
    if (this == &other) {
       // nop
-   } else if (get_node_alloc_() == other.get_node_alloc_()) {
+   } else if (this->get_node_alloc_() == other.get_node_alloc_()) {
       swap(size_, other.size_);
       swap(this->get_static_metanode_(), other.get_static_metanode_());
    } else if (node_alloc::propagate_on_container_swap::value) {
-      swap_allocators_();
+      this->swap_allocators_();
       swap(size_, other.size_);
       swap(this->get_static_metanode_(), other.get_static_metanode_());
    } else {
