@@ -64,6 +64,7 @@
     <ClInclude Include="include\parse_string_error_condition.hpp" />
     <ClInclude Include="include\pointer_to_string.hpp" />
     <ClInclude Include="include\interpolate_string.hpp" />
+    <ClInclude Include="include\string_interner.hpp" />
     <ClInclude Include="include\trim.hpp" />
     <ClInclude Include="include\utf16_widen_narrow.hpp" />
     <ClInclude Include="include\utf8_codepoint.hpp" />
@@ -82,6 +83,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src-string\pointer_to_string.cpp" />
+    <ClCompile Include="src-string\string_interner.cpp" />
     <ClCompile Include="src-string\utf8_codepoint.cpp" />
     <ClCompile Include="src-string\utf8_iterator.cpp" />
   </ItemGroup>
