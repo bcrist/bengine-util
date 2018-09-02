@@ -4,8 +4,6 @@
 
 #include "parse_string_error_condition.hpp"
 #include "trim.hpp"
-#include <be/core/logging.hpp>
-#include <be/core/stack_trace.hpp>
 #include <algorithm>
 #include <string>
 #include <unordered_map>
@@ -91,14 +89,7 @@ public:
       for (auto& key : results) {
          auto result = mappings_.emplace(key, value);
          if (!result.second) {
-            if (result.first->second != value) {
-               be_warn() << "Keyword mapping collision!"
-                  & attr(ids::log_attr_keyword) << S(key)
-                  & attr(ids::log_attr_existing_value) << E(result.first->second)
-                  & attr(ids::log_attr_new_value) << E(value)
-                  & trace()
-                  | default_log();
-            }
+            assert(result.first->second == value);
          }
       }
 
